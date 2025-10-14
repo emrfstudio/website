@@ -1,17 +1,15 @@
-﻿'use strict';
+'use strict';
 
 const showcaseVideos = [
     {
-        title: 'Dr. Menan Samy — عيادات التجميل',
-        description: 'مشاهد بالذكاء الاصطناعى مدموجه ب مونتاج خفيف .',
-        src: 'assets/videos/Dr.Menan Samy.mp4',
-        poster: 'assets/img/video-posters/menan.png'
+        title: 'Dr. Noha - AI ???????',
+        description: '??????? ?????? ??????? ??????? ????????? ?? ??? ????????? ???????.',
+        youtubeId: '4A7QFUq53sI'
     },
     {
-        title: 'Dr. Noha — AI بالكامل ',
-        description: 'المشاهد مصنوعه بالكامل بالذكاء الاصطناعى ما عدا التأثيرات البصريه.',
-        src: 'assets/videos/Dr.Noha.mp4',
-        poster: 'assets/img/video-posters/noha.png'
+        title: 'Dr. Menan Samy - ?????? ???????',
+        description: '????? ??????? ????????? ?????? ? ?????? ???? .',
+        youtubeId: 'ZHq2M-SLg_I'
     }
 ];
 
@@ -245,7 +243,7 @@ function renderVideoGallery() {
 
     if (!showcaseVideos.length) {
         const emptyState = document.createElement('p');
-        emptyState.textContent = 'أضف ملفات الفيديو الخاصة بك داخل assets/videos ثم حدّث القائمة في main.js.';
+        emptyState.textContent = '??? ????? ??????? ?????? ?? ???? assets/videos ?? ???? ??????? ?? main.js.';
         emptyState.setAttribute('data-reveal', '');
         gallery.appendChild(emptyState);
         return;
@@ -258,22 +256,10 @@ function renderVideoGallery() {
         const delay = (0.05 + index * 0.12).toFixed(2);
         card.dataset.revealDelay = `${delay}s`;
 
-        const video = document.createElement('video');
-        video.className = 'media-card__video';
-        video.controls = true;
-        video.preload = 'metadata';
-        if (item.poster) {
-            video.poster = item.poster;
+        const media = createMediaElement(item);
+        if (media) {
+            card.appendChild(media);
         }
-
-        const source = document.createElement('source');
-        source.src = item.src;
-        source.type = deriveMimeType(item.src);
-        video.appendChild(source);
-
-        const fallback = document.createElement('p');
-        fallback.textContent = 'متصفحك لا يدعم تشغيل الفيديو.';
-        video.appendChild(fallback);
 
         const meta = document.createElement('div');
         meta.className = 'media-card__meta';
@@ -289,12 +275,53 @@ function renderVideoGallery() {
         meta.appendChild(title);
         meta.appendChild(desc);
 
-        card.appendChild(video);
         card.appendChild(meta);
         gallery.appendChild(card);
     });
 
     requestAnimationFrame(() => observeRevealElements());
+}
+
+function createMediaElement(item) {
+    if (item.youtubeId) {
+        const frame = document.createElement('div');
+        frame.className = 'media-card__frame';
+
+        const iframe = document.createElement('iframe');
+        iframe.className = 'media-card__embed';
+        iframe.src = `https://www.youtube.com/embed/${item.youtubeId}?rel=0&modestbranding=1&playsinline=1`;
+        iframe.title = item.title ?? 'YouTube video';
+        iframe.loading = 'lazy';
+        iframe.allow =
+            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+
+        frame.appendChild(iframe);
+        return frame;
+    }
+
+    if (!item.src) {
+        return null;
+    }
+
+    const video = document.createElement('video');
+    video.className = 'media-card__video';
+    video.controls = true;
+    video.preload = 'metadata';
+    if (item.poster) {
+        video.poster = item.poster;
+    }
+
+    const source = document.createElement('source');
+    source.src = item.src;
+    source.type = deriveMimeType(item.src);
+    video.appendChild(source);
+
+    const fallback = document.createElement('p');
+    fallback.textContent = '?????? ?? ???? ????? ???????.';
+    video.appendChild(fallback);
+
+    return video;
 }
 
 function deriveMimeType(path) {
@@ -362,7 +389,7 @@ function setupAudioToggle() {
     let isPlaying = false;
 
     const updateLabel = () => {
-        label.textContent = isPlaying ? 'الصوت: يعمل' : 'الصوت: متوقف';
+        label.textContent = isPlaying ? '?????: ????' : '?????: ?????';
         toggleButton.setAttribute('aria-pressed', String(isPlaying));
     };
 
