@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +8,13 @@
 </head>
 <body>
     <header class="site-header">
-        <div class="container">
-            <a class="logo" href="../index.html">My Blog</a>
+        <div class="container site-header__inner">
+            <a class="site-logo" href="../index.html">My Blog</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="nav-toggle__label">Menu</span>
+                <span class="nav-toggle__icon" aria-hidden="true"></span>
+            </button>
             <nav class="site-nav" aria-label="Main navigation">
-                <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
                 <ul id="primary-menu">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="../blog.html">Blog</a></li>
@@ -79,29 +82,32 @@
     </main>
 
     <footer class="site-footer">
-        <div class="container site-footer__content">
+        <div class="container site-footer__inner">
             <div>
-                <p class="site-footer__title">My Blog</p>
+                <p class="site-footer__logo">My Blog</p>
                 <p class="site-footer__copy">Thoughtful writing on creativity, technology, and living intentionally.</p>
             </div>
             <div>
-                <p class="site-footer__title">Connect</p>
-                <ul class="footer-links">
+                <p class="site-footer__section-title">Connect</p>
+                <ul class="site-footer__links">
                     <li><a href="mailto:hello@example.com">Email</a></li>
                     <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
                     <li><a href="https://www.twitter.com" target="_blank" rel="noreferrer">Twitter</a></li>
                 </ul>
             </div>
             <div>
-                <p class="site-footer__title">Elsewhere</p>
-                <ul class="footer-links">
+                <p class="site-footer__section-title">Elsewhere</p>
+                <ul class="site-footer__links">
                     <li><a href="../about.html">About</a></li>
                     <li><a href="../blog.html">All posts</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                 </ul>
             </div>
+            <div class="site-footer__meta">
+                <p>&copy; <span data-js="year"></span> My Blog</p>
+                <p>Crafted with care.</p>
+            </div>
         </div>
-        <p class="site-footer__legal">&copy; <span data-js="year"></span> My Blog. Crafted with care.</p>
     </footer>
 
     <script src="../assets/js/main.js"></script>
