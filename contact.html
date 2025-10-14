@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog | Contact</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="logo" href="index.html">My Blog</a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+                <ul id="primary-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" aria-current="page">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero hero--sm">
+            <div class="container hero__content">
+                <div class="hero__text">
+                    <p class="hero__eyebrow">Connect</p>
+                    <h1>Let's start a conversation.</h1>
+                    <p class="hero__lead">
+                        Have feedback, a collaboration idea, or just want to say hello? Drop me a line below
+                        or reach out directly via email or social.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container split split--reverse">
+                <form class="contact-form">
+                    <div class="form-field">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="topic">Topic</label>
+                        <select id="topic" name="topic">
+                            <option>Say hello</option>
+                            <option>Collaboration</option>
+                            <option>Newsletter feedback</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Share your thoughts"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--dark">Send message</button>
+                </form>
+                <aside class="contact-details">
+                    <h2>Other ways to reach me</h2>
+                    <ul class="contact-list">
+                        <li>
+                            <strong>Email:</strong>
+                            <a href="mailto:hello@example.com">hello@example.com</a>
+                        </li>
+                        <li>
+                            <strong>Newsletter:</strong>
+                            <a href="index.html#latest">Join the monthly digest</a>
+                        </li>
+                        <li>
+                            <strong>LinkedIn:</strong>
+                            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn profile</a>
+                        </li>
+                        <li>
+                            <strong>Twitter:</strong>
+                            <a href="https://www.twitter.com" target="_blank" rel="noreferrer">@handle</a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container site-footer__content">
+            <div>
+                <p class="site-footer__title">My Blog</p>
+                <p class="site-footer__copy">Thoughtful writing on creativity, technology, and living intentionally.</p>
+            </div>
+            <div>
+                <p class="site-footer__title">Connect</p>
+                <ul class="footer-links">
+                    <li><a href="mailto:hello@example.com">Email</a></li>
+                    <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                    <li><a href="https://www.twitter.com" target="_blank" rel="noreferrer">Twitter</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="site-footer__title">Elsewhere</p>
+                <ul class="footer-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">All posts</a></li>
+                    <li><a href="contact.html" aria-current="page">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="site-footer__legal">&copy; <span data-js="year"></span> My Blog. Crafted with care.</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

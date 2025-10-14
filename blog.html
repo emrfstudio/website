@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog | Articles</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a class="logo" href="index.html">My Blog</a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+                <ul id="primary-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html" aria-current="page">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h1>All Articles</h1>
+                <p class="section__lead">
+                    Essays and field notes on creativity, mindful productivity, and the systems I use to
+                    keep learning in public.
+                </p>
+                <div class="filters">
+                    <p><strong>Browse topics:</strong></p>
+                    <ul class="tags">
+                        <li><span class="tag">Creativity</span></li>
+                        <li><span class="tag">Productivity</span></li>
+                        <li><span class="tag">Tools</span></li>
+                        <li><span class="tag">Mindset</span></li>
+                    </ul>
+                </div>
+                <div class="post-list">
+                    <article class="post-list__item">
+                        <p class="post-list__date">May 24, 2024 &bull; 8 min read</p>
+                        <h2><a href="posts/designing-a-life-you-love.html">Designing a life you love</a></h2>
+                        <p class="post-list__excerpt">
+                            How I map long-term aspirations to daily practices, plus the questions I revisit
+                            at the start of every month.
+                        </p>
+                        <a class="post-list__link" href="posts/designing-a-life-you-love.html">Read the post &rarr;</a>
+                    </article>
+                    <article class="post-list__item">
+                        <p class="post-list__date">May 10, 2024 &bull; 6 min read</p>
+                        <h2><a href="posts/the-creative-reset.html">The creative reset</a></h2>
+                        <p class="post-list__excerpt">
+                            When output slows, input matters. Here's the reset routine that helped me return
+                            to the keyboard with fresh energy.
+                        </p>
+                        <a class="post-list__link" href="posts/the-creative-reset.html">Read the post &rarr;</a>
+                    </article>
+                    <article class="post-list__item">
+                        <p class="post-list__date">April 21, 2024 &bull; 5 min read</p>
+                        <h2><a href="posts/tools-i-still-love.html">Tools I still love in 2024</a></h2>
+                        <p class="post-list__excerpt">
+                            A practical look at the analog and digital tools that have stayed in my rotation
+                            for years because they simply work.
+                        </p>
+                        <a class="post-list__link" href="posts/tools-i-still-love.html">Read the post &rarr;</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container site-footer__content">
+            <div>
+                <p class="site-footer__title">My Blog</p>
+                <p class="site-footer__copy">Thoughtful writing on creativity, technology, and living intentionally.</p>
+            </div>
+            <div>
+                <p class="site-footer__title">Connect</p>
+                <ul class="footer-links">
+                    <li><a href="mailto:hello@example.com">Email</a></li>
+                    <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                    <li><a href="https://www.twitter.com" target="_blank" rel="noreferrer">Twitter</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="site-footer__title">Elsewhere</p>
+                <ul class="footer-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html" aria-current="page">All posts</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="site-footer__legal">&copy; <span data-js="year"></span> My Blog. Crafted with care.</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

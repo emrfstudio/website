@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMRF STUDIO | AI Ads, Motion, VFX</title>
+    <meta name="description" content="EMRF STUDIO — استوديو إنتاج إعلاني يدمج الإبداع المهني مع الذكاء الاصطناعي لصناعة محتوى فيديو متقن، قابل للقياس، وسريع الجاهزية.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header class="site-header" data-header>
+        <div class="container site-header__inner">
+            <a class="site-logo" href="#hero" aria-label="EMRF STUDIO">EMRF STUDIO</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+                <span class="nav-toggle__label">القائمة</span>
+                <span class="nav-toggle__icon" aria-hidden="true"></span>
+            </button>
+            <nav class="site-nav" aria-label="التنقل الرئيسي">
+                <ul id="primary-menu">
+                    <li><a href="#hero">الرئيسية</a></li>
+                    <li><a href="#showcase">معرض الأعمال</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#workflow">كيف نعمل</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#contact">تواصل</a></li>
+                </ul>
+            </nav>
+            <div class="site-header__cta-group">
+                <a class="site-chip" href="https://mail.google.com/mail/?view=cm&fs=1&to=emrfstudio@gmail.com" target="_blank" rel="noopener">emrfstudio@gmail.com</a>
+                <a class="site-chip site-chip--accent" href="https://wa.me/201505349988" target="_blank" rel="noopener">واتساب مباشر</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero" data-hero>
+            <div class="hero__backdrop" aria-hidden="true"></div>
+            <div class="hero__audio-toggle" data-audio-control>
+                <button type="button" class="audio-toggle" aria-pressed="false">
+                    <span class="audio-toggle__icon" aria-hidden="true"></span>
+                    <span class="audio-toggle__label">الصوت: متوقف</span>
+                </button>
+                <audio data-hero-audio preload="none" src="assets/audio/Wish.mp3"></audio>
+            </div>
+
+            <div class="container hero__stage glass-panel" data-reveal data-reveal-mode="scale" data-reveal-delay="0.05s">
+                <div class="hero__copy" data-reveal data-reveal-mode="left" data-reveal-delay="0.1s">
+                    <p class="hero__eyebrow">AI Ads · Motion · VFX · Edit</p>
+                    <h1>EMRF STUDIO</h1>
+                    <p class="hero__lead hero__lead--primary">
+                        نحن استوديو إنتاج إعلاني يوفّق بين الإبداع المهني وتقنيات الذكاء الاصطناعي لتقديم محتوى فيديو متقن، قابل للقياس، وسريع الجاهزية.
+                        ننطلق من أهداف العمل والجمهور المستهدف لصياغة رسائل واضحة وصور بصرية دقيقة، ثم ننفّذ بسير عمل منضبط يضمن تسليم الدفعة الأولى في أقصر
+                        وقت ممكن مع الحفاظ على معايير جودة ثابتة.
+                    </p>
+                    <p class="hero__lead hero__lead--secondary">
+                        تركيزنا على النتائج ينعكس في حملات فيديو تدعم المبيعات المباشرة وتُرسّخ صورة العلامة، عبر اختبار مستمر وتحسين مبني على البيانات.
+                        نلتزم بالشفافية والمواعيد وأفضل الممارسات المهنية في جميع مراحل الإنتاج.
+                    </p>
+                    <div class="hero__actions" data-reveal data-reveal-mode="scale" data-reveal-delay="0.18s">
+                        <a class="btn" href="https://wa.me/201505349988" target="_blank" rel="noopener">تحدث معنا على واتساب</a>
+                        <a class="btn btn--ghost" href="#contact">احجز مكالمة</a>
+                    </div>
+                </div>
+                <div class="hero__visual" data-hero-art data-reveal data-reveal-mode="right" data-reveal-delay="0.3s">
+                    <canvas class="hero__canvas"
+                            data-sequence-target
+                            data-sequence-prefix="assets/img/statue/sequence/frame-"
+                            data-sequence-ext=".jpg"
+                            data-sequence-frames="24"
+                            data-sequence-pad="2"
+                            aria-hidden="true"></canvas>
+                    <img class="hero__fallback" data-sequence-fallback src="assets/img/statue/hero-placeholder.png" alt="تمثال ثلاثي الأبعاد يمثل هوية الاستوديو" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section id="showcase" class="section section--showcase">
+            <div class="container glass-panel section__body" data-reveal data-reveal-mode="scale">
+                <header class="section__header">
+                    <span class="section-badge" data-reveal data-reveal-mode="left">معرض الأعمال</span>
+                    <h2 data-reveal data-reveal-delay="0.08s" data-reveal-mode="right">عينات مختارة من حملات الفيديو</h2>
+                    <p class="section__lead" data-reveal data-reveal-delay="0.16s">
+                        عروض قصيرة تلخّص مزيج الذكاء الاصطناعي، المونتاج، الموشن، والـ VFX، لتستكشف كيف نحول الأفكار إلى محتوى يجذب الجمهور.
+                    </p>
+                </header>
+                <div class="media-grid" data-video-gallery></div>
+            </div>
+        </section>
+
+        <section id="about" class="section section--about">
+            <div class="container glass-panel section__body" data-reveal data-reveal-mode="scale">
+                <header class="section__header">
+                    <span class="section-badge" data-reveal data-reveal-mode="left">من نحن</span>
+                    <h2 data-reveal data-reveal-delay="0.08s" data-reveal-mode="right">استوديو إنتاج إعلاني يعمل عن بُعد</h2>
+                </header>
+                <p class="section__lead" data-reveal data-reveal-delay="0.16s">
+                    نعمل بفريق من ثلاثة مختصين في الذكاء الاصطناعي، المونتاج، الموشن، وVFX. نرافق شركاءنا من الفكرة وحتى الإطلاق بسرعة تنفيذ لا تتجاوز 72 ساعة للدفعة الأولى،
+                    وتحسين مستمر مبني على البيانات.
+                </p>
+                <div class="grid grid--duo">
+                    <article class="card card--light" data-reveal data-reveal-delay="0.05s" data-reveal-mode="left">
+                        <h3>رسالتنا</h3>
+                        <p>تحويل أهداف عملائنا إلى محتوى فيديو يحقق نتائج قابلة للقياس دون التضحية بالجودة أو السرعة.</p>
+                    </article>
+                    <article class="card card--light" data-reveal data-reveal-delay="0.15s" data-reveal-mode="right">
+                        <h3>رؤيتنا</h3>
+                        <p>أن نكون الشريك العربي القادر على دمج الإبداع والـAI لصناعة تجارب فيديو متجددة ترتقي بالعلامات.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--values">
+            <div class="container glass-panel section__body" data-reveal data-reveal-mode="scale">
+                <header class="section__header">
+                    <span class="section-badge" data-reveal data-reveal-mode="left">قيمنا</span>
+                    <h2 data-reveal data-reveal-delay="0.08s">قيم تعزز الثقة</h2>
+                    <p data-reveal data-reveal-delay="0.16s">أسلوب عمل يوازن بين السرعة، الشفافية، ورفع الجودة في كل مشروع.</p>
+                </header>
+                <ul class="values-list">
+                    <li data-reveal data-reveal-delay="0.05s">السرعة دون التنازل عن الجودة</li>
+                    <li data-reveal data-reveal-delay="0.15s" data-reveal-mode="left">الالتزام بالمواعيد والتواصل الواضح</li>
+                    <li data-reveal data-reveal-delay="0.25s" data-reveal-mode="right">تحسين مستمر قائم على البيانات</li>
+                    <li data-reveal data-reveal-delay="0.35s" data-reveal-mode="scale">امتثال مهني خاصة في القطاعات الطبية</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section section--why">
+            <div class="container glass-panel section__body" data-reveal data-reveal-mode="scale">
+                <header class="section__header">
+                    <span class="section-badge" data-reveal data-reveal-mode="left">لماذا نحن؟</span>
+                    <h2 data-reveal data-reveal-delay="0.08s">EMRF STUDIO شريك نتائج</h2>
+                </header>
+                <div class="grid grid--triple">
+                    <article class="card" data-reveal data-reveal-delay="0.05s" data-reveal-mode="scale">
+                        <h3>إعلانات مدعومة بالذكاء الاصطناعي</h3>
+                        <p>نختبر أفكارًا متعددة بسرعة وكلفة أقل عبر A/B Testing مستمر يضمن أفضل أداء للحملات.</p>
+                    </article>
+                    <article class="card" data-reveal data-reveal-delay="0.12s" data-reveal-mode="rotate">
+                        <h3>مونتاج وموشن وVFX احترافي</h3>
+                        <p>نبني سلاسل تصوير ومؤثرات ترفع معدّل المشاهدة والنقر بأسلوب يناسب كل منصة.</p>
+                    </article>
+                    <article class="card" data-reveal data-reveal-delay="0.19s" data-reveal-mode="scale">
+                        <h3>تسليم خلال 72 ساعة</h3>
+                        <p>أول دفعة جاهزة للنشر خلال 72 ساعة مع جولتي تعديلات سريعتين لضمان دقة الرسالة.</p>
+                    </article>
+                    <article class="card" data-reveal data-reveal-delay="0.26s" data-reveal-mode="rotate">
+                        <h3>تخصّص قطاعي</h3>
+                        <p>خبرة في التجميل والجلدية، الأسنان، الشعر، المدرّسين، والشركات B2C/B2B برسائل موجهة.</p>
+                    </article>
+                    <article class="card" data-reveal data-reveal-delay="0.33s" data-reveal-mode="scale">
+                        <h3>قياس وتحسين متواصل</h3>
+                        <p>نراجع مؤشرات Hook Rate، View Rate، CTR، CPL، والحجوزات المؤكدة لتحسين كل دفعة.</p>
+                    </article>
+                    <article class="card" data-reveal data-reveal-delay="0.4s" data-reveal-mode="rotate">
+                        <h3>عمل عن بُعد بالكامل</h3>
+                        <p>تعاون سلس على واتساب والسحابة مع أرشفة منظّمة للأصول وإتاحة الوصول للفريق.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section section--services">
+            <div class="container glass-panel section__body" data-reveal data-reveal-mode="scale">
+                <header class="section__header">
+                    <span class="section-badge" data-reveal data-reveal-mode="left">ما الذي نقدّمه</span>
+                    <h2 data-reveal data-reveal-delay="0.08s">حزمة كاملة لإطلاق الفيديو</h2>
+                    <p class="section__lead" data-reveal data-reveal-delay="0.16s">من الفكرة إلى القياس والتحسين، نقدم خدمات تغطي كل ما تحتاجه لحملة فيديو ناجحة.</p>
+                </header>
+                <div class="grid grid--services">
+                    <article class="service-card" data-reveal data-reveal-delay="0.05s" data-reveal-mode="scale">
+                        <h3>إنتاج Reels/Shorts</h3>
+                        <p>مقاطع 15–30 ثانية بنسخ متعددة وهوكات قوية تلائم منصات Meta وTikTok وYouTube.</p>
+                    </article>
+                    <article class="service-card" data-reveal data-reveal-delay="0.12s" data-reveal-mode="scale">
+                        <h3>Motion Graphics</h3>
+                        <p>مواد تعليمية، FAQs، وخرافة مقابل حقيقة بأسلوب بصري واضح للقطاع الطبي.</p>
+                    </article>
+                    <article class="service-card" data-reveal data-reveal-delay="0.19s" data-reveal-mode="scale">
+                        <h3>VFX &amp; Compositing</h3>
+                        <p>إبراز المنتجات والميزات المعقدة بمؤثرات واقعية تعزز ثقة الجمهور.</p>
+                    </article>
+                    <article class="service-card" data-reveal data-reveal-delay="0.26s" data-reveal-mode="scale">
+                        <h3>براند فيلم قصير بالـ AI</h3>
+                        <p>فيديو 30–45 ثانية يربط العلامة بقصة ملهمة باستخدام أحدث أدوات الذكاء الاصطناعي.</p>
+                    </article>
+                    <article class="service-card" data-reveal data-reveal-delay="0.33s" data-reveal-mode="scale">
+                        <h3>كتابة سكربتات ونصوص</h3>
+                        <p>صياغة نصوص عربية متوافقة مع سياسات المنصات وتراعي خصوصية كل قطاع.</p>
+                    </article>
+                    <article class="service-card" data-reveal data-reveal-delay="0.4s" data-reveal-mode="scale">
+                        <h3>إعداد وإدارة الحملات</h3>
+                        <p>تشغيل حملات Facebook وTikTok وInstagram وLinkedIn مع مراقبة مستمرة وتحسينات أسبوعية.</p>
+                    </article>
+                    <article class="service-card" data-reveal data-reveal-delay="0.47s" data-reveal-mode="scale">
+                        <h3>تقارير KPIs أسبوعية</h3>
+                        <p>لوحة مؤشرات جاهزة للمشاركة وتوصيات تحسين مبنية على البيانات.</p>
+                    </article>
+                    <article class="service-card" data-reveal data-reveal-delay="0.54s" data-reveal-mode="scale">
+                        <h3>فيديوهات غنائية مخصصة</h3>
+                        <p>إنشاء فيديو بصري متكامل يرافق أغنيتك ويعكس الإيقاع والهوية السمعية.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--industries">
+            <div class="container glass-panel section__body" data-reveal data-reveal-mode="scale">
+                <header class="section__header">
+                    <span class="section-badge" data-reveal data-reveal-mode="left">القطاعات</span>
+                    <h2 data-reveal data-reveal-delay="0.08s">القطاعات التي نخدمها</h2>
+                </header>
+                <ul class="industry-tags">
+                    <li data-reveal data-reveal-delay="0.05s" data-reveal-mode="left">التجميل والجلدية</li>
+                    <li data-reveal data-reveal-delay="0.12s" data-reveal-mode="scale">الأسنان</li>
+                    <li data-reveal data-reveal-delay="0.19s" data-reveal-mode="right">الشعر وزراعة الشعر</li>
+                    <li data-reveal data-reveal-delay="0.26s" data-reveal-mode="scale">الشركات والمنتجات B2C/B2B</li>
+                    <li data-reveal data-reveal-delay="0.33s" data-reveal-mode="left">المدرّسون والدورات التعليمية</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="workflow" class="section section--workflow">
+            <div class="container glass-panel section__body" data-reveal data-reveal-mode="scale">
+                <header class="section__header">
+                    <span class="section-badge" data-reveal data-reveal-mode="left">كيف نعمل</span>
+                    <h2 data-reveal data-reveal-delay="0.08s">من الفكرة إلى الانطلاق</h2>
+                    <p data-reveal data-reveal-delay="0.16s">عملية واضحة تمنحك الشفافية والسرعة وتحافظ على جودة المخرجات.</p>
+                </header>
+                <ol class="workflow-list">
+                    <li data-reveal data-reveal-delay="0.05s" data-reveal-mode="left">
+                        <span class="workflow-list__step">01</span>
+                        <div>
+                            <h3>استمارة موجزة</h3>
+                            <p>نجمع الهدف، الجمهور، والميزانية عبر استمارة سريعة لتحديد الأولويات.</p>
+                        </div>
+                    </li>
+                    <li data-reveal data-reveal-delay="0.12s" data-reveal-mode="left">
+                        <span class="workflow-list__step">02</span>
+                        <div>
+                            <h3>جلسة احتياجات (15 دقيقة)</h3>
+                            <p>مكالمة تركّز على الرسالة والنتائج المطلوبة وتضبط أسلوب التنفيذ.</p>
+                        </div>
+                    </li>
+                    <li data-reveal data-reveal-delay="0.19s" data-reveal-mode="left">
+                        <span class="workflow-list__step">03</span>
+                        <div>
+                            <h3>إنتاج أولي خلال 48–72 ساعة</h3>
+                            <p>نسلّم مقاسات 9:16 / 1:1 / 16:9 جاهزة للنشر عبر المنصات.</p>
+                        </div>
+                    </li>
+                    <li data-reveal data-reveal-delay="0.26s" data-reveal-mode="left">
+                        <span class="workflow-list__step">04</span>
+                        <div>
+                            <h3>جولتا تعديلات</h3>
+                            <p>تنفيذ الملاحظات بسرعة للحفاظ على زخم الإطلاق.</p>
+                        </div>
+                    </li>
+                    <li data-reveal data-reveal-delay="0.33s" data-reveal-mode="left">
+                        <span class="workflow-list__step">05</span>
+                        <div>
+                            <h3>إطلاق وإدارة الحملة</h3>
+                            <p>تفعيل الحملة مع A/B Testing أسبوعي لتحسين الأداء.</p>
+                        </div>
+                    </li>
+                    <li data-reveal data-reveal-delay="0.4s" data-reveal-mode="left">
+                        <span class="workflow-list__step">06</span>
+                        <div>
+                            <h3>تقارير أداء ولوحة مؤشرات</h3>
+                            <p>مشاركة KPIs واضحة وتوصيات التطوير مع إمكانية الاطلاع الفوري.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section section--compliance">
+            <div class="container glass-panel section__body" data-reveal data-reveal-mode="scale">
+                <header class="section__header">
+                    <span class="section-badge" data-reveal data-reveal-mode="left">التزام مهني</span>
+                    <h2 data-reveal data-reveal-delay="0.08s">معايير واضحة للقطاعات الحساسة</h2>
+                </header>
+                <p class="section__lead" data-reveal data-reveal-delay="0.16s">
+                    في القطاعات الطبية، نلتزم بموافقات التصوير والنشر، ونتجنب أي وعود علاجية أو نتائج مؤكدة. نوضح دائماً أن النتائج تختلف بين الأفراد
+                    ونضمن توافق المحتوى مع سياسات المنصات المحلية والدولية.
+                </p>
+            </div>
+        </section>
+
+        <section id="contact" class="section section--contact">
+            <div class="container glass-panel section__body section__body--contact" data-reveal data-reveal-mode="scale">
+                <header class="section__header">
+                    <span class="section-badge" data-reveal data-reveal-mode="left">جاهزون للانطلاق؟</span>
+                    <h2 data-reveal data-reveal-delay="0.08s">تواصل معنا</h2>
+                </header>
+                <div class="contact-card" data-reveal data-reveal-delay="0.16s" data-reveal-mode="scale">
+                    <p>
+                        شاركنا الهدف، المنتج، أو الفكرة، ودعنا نصمم لك حملة جاهزة للقياس والبيع. نعمل عن بُعد بالكامل مع متابعة مستمرة على واتساب والسحابة.
+                    </p>
+                    <ul class="contact-card__list">
+                        <li>
+                            <span>البريد:</span>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=emrfstudio@gmail.com" target="_blank" rel="noopener">emrfstudio@gmail.com</a>
+                        </li>
+                        <li>
+                            <span>الهاتف / واتساب:</span>
+                            <a href="https://wa.me/201505349988" target="_blank" rel="noopener">+20 150 534 9988</a>
+                        </li>
+                    </ul>
+                    <div class="contact-card__actions" data-reveal data-reveal-delay="0.24s">
+                        <a class="btn" href="https://wa.me/201505349988" target="_blank" rel="noopener">بدء محادثة الآن</a>
+                        <a class="btn btn--ghost" href="https://forms.gle/uBW2ssSTiCi8v7nE9">أرسل لنا البريف</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+            <div data-reveal data-reveal-delay="0.05s">
+                <p class="site-footer__logo">EMRF STUDIO</p>
+                <p class="site-footer__copy">AI Ads · Motion · VFX · Remote Production Studio</p>
+            </div>
+            <ul class="site-footer__links" data-reveal data-reveal-delay="0.12s">
+                <li><a href="#hero">الرئيسية</a></li>
+                <li><a href="#showcase">معرض الأعمال</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#workflow">كيف نعمل</a></li>
+                <li><a href="#contact">تواصل</a></li>
+            </ul>
+            <div class="site-footer__meta" data-reveal data-reveal-delay="0.2s">
+                <p>&copy; <span data-js="year"></span> EMRF STUDIO</p>
+                <p>صناعة محتوى فيديو ذكي يحرّك نموك.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cursor-lens" data-cursor-lens aria-hidden="true"></div>
+    <script src="assets/js/main.js" defer></script>
+</body>
+</html>
+

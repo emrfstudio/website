@@ -1,0 +1,23 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1924"/>
+      <stop offset="50%" stop-color="#2a2232"/>
+      <stop offset="100%" stop-color="#100c15"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="30%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#d6ac8f" stop-opacity="0.48"/>
+      <stop offset="100%" stop-color="#d6ac8f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#grad)"/>
+  <circle cx="520" cy="260" r="360" fill="url(#glow)"/>
+  <circle cx="880" cy="440" r="280" fill="url(#glow)" opacity="0.35"/>
+  <g fill="#ffffff" fill-opacity="0.28">
+    <path d="M282 390c25-92 93-164 186-193 105-33 223 9 289 103 21 30 35 64 43 101 6 23-10 46-34 49l-334 34c-43 4-76-36-64-79z" opacity="0.4"/>
+    <path d="M830 534c-42-10-75-44-83-87-10-52 20-105 70-124 47-17 101 3 126 47 10 17 15 36 15 55 0 69-63 118-128 109z" opacity="0.55"/>
+  </g>
+  <text x="50%" y="84%" font-size="48" fill="#f4f1f7" font-family="'Space Grotesk', 'Cairo', sans-serif" text-anchor="middle" opacity="0.72">
+    Video Placeholder
+  </text>
+</svg>
