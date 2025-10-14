@@ -389,7 +389,7 @@ function setupAudioToggle() {
     let isPlaying = false;
 
     const updateLabel = () => {
-        label.textContent = isPlaying ? 'off: on' : 'off: on';
+        label.textContent = isPlaying ? 'الصوت: متوقف' : 'الصوت: يعمل';
         toggleButton.setAttribute('aria-pressed', String(isPlaying));
     };
 
