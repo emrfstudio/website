@@ -1477,13 +1477,14 @@ ol {
     .site-nav ul {
         position: absolute;
         inset-block-start: calc(100% + clamp(12px, 4vw, 22px));
-        inset-inline: clamp(12px, 6vw, 24px);
+        inset-inline-start: 50%;
         display: flex;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
-        gap: clamp(0.4rem, 2.2vw, 0.75rem);
-        padding: clamp(14px, 4.5vw, 20px);
+        gap: clamp(0.45rem, 2.4vw, 0.85rem);
+        padding: clamp(12px, 4.2vw, 18px);
+        width: min(92vw, 640px);
         border-radius: 999px;
         background: rgba(12, 12, 26, 0.92);
         border: 1px solid rgba(255, 255, 255, 0.14);
@@ -1491,28 +1492,21 @@ ol {
         backdrop-filter: blur(24px) saturate(130%);
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px);
+        transform: translate(-50%, -10px);
         pointer-events: none;
-        max-width: calc(100% - clamp(24px, 12vw, 48px));
-        overflow-x: auto;
-        overflow-y: hidden;
-        scrollbar-width: none;
+        overflow: hidden;
         z-index: 80;
-    }
-
-    .site-nav ul::-webkit-scrollbar {
-        display: none;
     }
 
     .site-nav ul[data-open="true"] {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
+        transform: translate(-50%, 0);
         pointer-events: auto;
     }
 
     .site-nav li {
-        flex: 0 0 auto;
+        flex: 0 1 clamp(120px, 28vw, 160px);
     }
 
     .site-nav li a {
@@ -1521,7 +1515,7 @@ ol {
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid transparent;
-        font-size: 0.96rem;
+        font-size: 0.95rem;
         letter-spacing: 0.03em;
     }
 
@@ -1676,14 +1670,24 @@ ol {
     }
 
     .site-nav ul {
-        inset-inline: clamp(12px, 7vw, 20px);
-        padding: clamp(14px, 5.5vw, 20px);
-        min-width: auto;
-        max-width: calc(100% - clamp(24px, 14vw, 48px));
+        inset-inline-start: 50%;
+        inset-inline-end: auto;
+        width: min(94vw, 520px);
+        padding: clamp(12px, 6vw, 18px);
+        transform: translate(-50%, -10px);
+    }
+
+    .site-nav ul[data-open="true"] {
+        transform: translate(-50%, 0);
+    }
+
+    .site-nav li {
+        flex: 1 1 clamp(140px, 44vw, 200px);
     }
 
     .site-nav li a {
-        font-size: 0.93rem;
+        font-size: 0.92rem;
+        justify-content: center;
     }
 
     .site-header__inner {
