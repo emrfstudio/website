@@ -1477,42 +1477,52 @@ ol {
     .site-nav ul {
         position: absolute;
         inset-block-start: calc(100% + clamp(12px, 4vw, 22px));
-        inset-inline-start: 50%;
-        flex-direction: column;
-        align-items: stretch;
-        padding: clamp(18px, 5vw, 26px);
-        gap: clamp(12px, 3vw, 18px);
-        border-radius: var(--radius-md);
-        background: rgba(12, 12, 26, 0.95);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55);
-        backdrop-filter: blur(26px) saturate(135%);
+        inset-inline: clamp(12px, 6vw, 24px);
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: clamp(0.4rem, 2.2vw, 0.75rem);
+        padding: clamp(14px, 4.5vw, 20px);
+        border-radius: 999px;
+        background: rgba(12, 12, 26, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(24px) saturate(130%);
         opacity: 0;
         visibility: hidden;
-        transform: translate3d(-50%, -12px, 0);
+        transform: translateY(-10px);
         pointer-events: none;
-        min-width: min(320px, 86vw);
-        max-width: 92vw;
-        max-height: calc(100vh - var(--header-height) - 48px);
-        overflow-y: auto;
+        max-width: calc(100% - clamp(24px, 12vw, 48px));
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
         z-index: 80;
+    }
+
+    .site-nav ul::-webkit-scrollbar {
+        display: none;
     }
 
     .site-nav ul[data-open="true"] {
         opacity: 1;
         visibility: visible;
-        transform: translate3d(-50%, 0, 0);
+        transform: translateY(0);
         pointer-events: auto;
+    }
+
+    .site-nav li {
+        flex: 0 0 auto;
     }
 
     .site-nav li a {
         justify-content: center;
-        padding: 0.75rem 1.2rem;
-        border-radius: var(--radius-sm);
-        background: rgba(255, 255, 255, 0.04);
+        padding: 0.65rem clamp(1rem, 3.5vw, 1.4rem);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
         border: 1px solid transparent;
-        font-size: 0.98rem;
-        letter-spacing: 0.04em;
+        font-size: 0.96rem;
+        letter-spacing: 0.03em;
     }
 
     .site-nav li a:hover,
@@ -1666,14 +1676,14 @@ ol {
     }
 
     .site-nav ul {
-        inset-inline-start: 50%;
-        padding: clamp(18px, 7vw, 26px);
-        min-width: min(260px, 88vw);
-        max-width: 94vw;
+        inset-inline: clamp(12px, 7vw, 20px);
+        padding: clamp(14px, 5.5vw, 20px);
+        min-width: auto;
+        max-width: calc(100% - clamp(24px, 14vw, 48px));
     }
 
     .site-nav li a {
-        font-size: 0.94rem;
+        font-size: 0.93rem;
     }
 
     .site-header__inner {
