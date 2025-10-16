@@ -820,6 +820,23 @@ ol {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
+.media-gallery {
+    display: grid;
+    gap: clamp(28px, 5vw, 40px);
+}
+
+.media-group {
+    display: grid;
+    gap: clamp(16px, 3vw, 24px);
+}
+
+.media-group__title {
+    margin: 0;
+    font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+    color: var(--text-100);
+    font-weight: 700;
+}
+
 .media-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

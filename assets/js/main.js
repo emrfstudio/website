@@ -13,6 +13,74 @@ const showcaseVideos = [
     }
 ];
 
+const VIDEO_CATEGORY_RULES = [
+    {
+        key: 'medical',
+        label: 'القطاع الطبي',
+        matches: (text) =>
+            /\bdr\b/.test(text) ||
+            text.includes('doctor') ||
+            text.includes('عيادة') ||
+            text.includes('طبي') ||
+            text.includes('دكتور') ||
+            text.includes('دكتورة') ||
+            text.includes('علاج') ||
+            text.includes('جلدية') ||
+            text.includes('اسنان') ||
+            text.includes('أسنان')
+    },
+    {
+        key: 'fashion',
+        label: 'قطاع الموضة والملابس',
+        matches: (text) =>
+            text.includes('fashion') ||
+            text.includes('ملابس') ||
+            text.includes('موضة') ||
+            text.includes('أزياء') ||
+            text.includes('ازياء') ||
+            text.includes('ستايل') ||
+            text.includes('style') ||
+            text.includes('outfit')
+    },
+    {
+        key: 'cinematic',
+        label: 'قطاع الأفلام والإعلانات السينمائية',
+        matches: (text) =>
+            text.includes('film') ||
+            text.includes('فيلم') ||
+            text.includes('سينمائي') ||
+            text.includes('cinematic') ||
+            text.includes('اعلان') ||
+            text.includes('إعلان') ||
+            text.includes('برومو') ||
+            text.includes('promo') ||
+            text.includes('commercial') ||
+            text.includes('كليب') ||
+            text.includes('clip') ||
+            text.includes('music video')
+    },
+    {
+        key: 'education',
+        label: 'قطاع المدرّسين والدورات التعليمية',
+        matches: (text) =>
+            text.includes('teacher') ||
+            text.includes('teachers') ||
+            text.includes('course') ||
+            text.includes('courses') ||
+            text.includes('مدرس') ||
+            text.includes('مدرّس') ||
+            text.includes('تعليم') ||
+            text.includes('تعليمي') ||
+            text.includes('دورة') ||
+            text.includes('دورات')
+    }
+];
+
+const FALLBACK_VIDEO_CATEGORY = {
+    key: 'other',
+    label: 'مشاريع متنوعة'
+};
+
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -233,6 +301,60 @@ function initialiseImageSequence(canvas, fallbackImage) {
     };
 }
 
+function normaliseTextForSearch(input) {
+    if (input == null) {
+        return '';
+    }
+    return input
+        .toString()
+        .toLowerCase()
+        .replace(/[\u064b-\u0652]/g, '')
+        .replace(/[.,/#!$%?\^&*;:{}=\-_`~()\[\]|<>\"'،؛]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function buildVideoSearchText(item) {
+    const parts = [item.title, item.description];
+    if (Array.isArray(item.tags)) {
+        parts.push(item.tags.join(' '));
+    }
+    if (item.category) {
+        parts.push(item.category);
+    }
+    return normaliseTextForSearch(parts.filter(Boolean).join(' '));
+}
+
+function detectVideoCategory(item) {
+    if (item.category) {
+        const explicit = VIDEO_CATEGORY_RULES.find((rule) => rule.key === item.category);
+        if (explicit) {
+            return explicit.key;
+        }
+        if (item.category === FALLBACK_VIDEO_CATEGORY.key) {
+            return FALLBACK_VIDEO_CATEGORY.key;
+        }
+    }
+
+    const text = buildVideoSearchText(item);
+
+    for (const rule of VIDEO_CATEGORY_RULES) {
+        if (rule.matches(text, item)) {
+            return rule.key;
+        }
+    }
+
+    return FALLBACK_VIDEO_CATEGORY.key;
+}
+
+function getVideoCategoryLabel(key) {
+    if (key === FALLBACK_VIDEO_CATEGORY.key) {
+        return FALLBACK_VIDEO_CATEGORY.label;
+    }
+    const rule = VIDEO_CATEGORY_RULES.find((entry) => entry.key === key);
+    return rule ? rule.label : FALLBACK_VIDEO_CATEGORY.label;
+}
+
 function renderVideoGallery() {
     const gallery = document.querySelector('[data-video-gallery]');
     if (!gallery) {
@@ -241,45 +363,105 @@ function renderVideoGallery() {
 
     gallery.innerHTML = '';
 
-    if (!showcaseVideos.length) {
+    if (!Array.isArray(showcaseVideos) || !showcaseVideos.length) {
         const emptyState = document.createElement('p');
-        emptyState.textContent = '??? ????? ??????? ?????? ?? ???? assets/videos ?? ???? ??????? ?? main.js.';
+        emptyState.textContent = 'أضِف أعمال الفيديو إلى القائمة داخل main.js ليظهر المعرض هنا.';
         emptyState.setAttribute('data-reveal', '');
         gallery.appendChild(emptyState);
         return;
     }
 
-    showcaseVideos.forEach((item, index) => {
-        const card = document.createElement('article');
-        card.className = 'media-card';
-        card.setAttribute('data-reveal', '');
-        const delay = (0.05 + index * 0.12).toFixed(2);
-        card.dataset.revealDelay = `${delay}s`;
+    const groups = new Map();
 
-        const media = createMediaElement(item);
-        if (media) {
-            card.appendChild(media);
+    showcaseVideos.forEach((item) => {
+        const categoryKey = detectVideoCategory(item);
+        const label = getVideoCategoryLabel(categoryKey);
+        if (!groups.has(categoryKey)) {
+            groups.set(categoryKey, {
+                key: categoryKey,
+                label,
+                items: []
+            });
         }
+        groups.get(categoryKey).items.push(item);
+    });
 
-        const meta = document.createElement('div');
-        meta.className = 'media-card__meta';
+    const orderedKeys = [...VIDEO_CATEGORY_RULES.map((rule) => rule.key), FALLBACK_VIDEO_CATEGORY.key];
 
-        const title = document.createElement('h3');
-        title.className = 'media-card__title';
-        title.textContent = item.title;
+    const orderedGroups = orderedKeys
+        .map((key) => groups.get(key))
+        .filter(Boolean)
+        .filter((group) => group.items.length);
 
-        const desc = document.createElement('p');
-        desc.className = 'media-card__desc';
-        desc.textContent = item.description;
+    if (!orderedGroups.length) {
+        const emptyState = document.createElement('p');
+        emptyState.textContent = 'أضِف أعمال الفيديو إلى القائمة داخل main.js ليظهر المعرض هنا.';
+        emptyState.setAttribute('data-reveal', '');
+        gallery.appendChild(emptyState);
+        return;
+    }
 
-        meta.appendChild(title);
-        meta.appendChild(desc);
+    orderedGroups.forEach((group, groupIndex) => {
+        const section = document.createElement('section');
+        section.className = 'media-group';
+        section.setAttribute('data-reveal', '');
+        const groupDelay = (0.05 + groupIndex * 0.15).toFixed(2);
+        section.dataset.revealDelay = `${groupDelay}s`;
 
-        card.appendChild(meta);
-        gallery.appendChild(card);
+        const heading = document.createElement('h3');
+        heading.className = 'media-group__title';
+        heading.textContent = group.label;
+        section.appendChild(heading);
+
+        const grid = document.createElement('div');
+        grid.className = 'media-grid';
+
+        group.items.forEach((item, itemIndex) => {
+            const card = createMediaCard(item, itemIndex);
+            grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        gallery.appendChild(section);
     });
 
     requestAnimationFrame(() => observeRevealElements());
+}
+
+function createMediaCard(item, delayIndex = 0) {
+    const card = document.createElement('article');
+    card.className = 'media-card';
+    card.setAttribute('data-reveal', '');
+    const delay = (0.05 + delayIndex * 0.12).toFixed(2);
+    card.dataset.revealDelay = `${delay}s`;
+
+    const media = createMediaElement(item);
+    if (media) {
+        card.appendChild(media);
+    }
+
+    const meta = document.createElement('div');
+    meta.className = 'media-card__meta';
+
+    if (item.title) {
+        const title = document.createElement('h3');
+        title.className = 'media-card__title';
+        title.textContent = item.title;
+        meta.appendChild(title);
+    }
+
+    if (item.description) {
+        const desc = document.createElement('p');
+        desc.className = 'media-card__desc';
+        desc.textContent = item.description;
+        meta.appendChild(desc);
+    }
+
+    if (meta.children.length) {
+        card.appendChild(meta);
+    }
+
+    return card;
 }
 
 function createMediaElement(item) {
