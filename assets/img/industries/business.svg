@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+    <defs>
+        <linearGradient id="business-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#97efd5"/>
+            <stop offset="100%" stop-color="#4ab7c5"/>
+        </linearGradient>
+        <linearGradient id="business-bar" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#e2fff4" stop-opacity="0.35"/>
+        </linearGradient>
+    </defs>
+    <rect width="80" height="80" rx="22" fill="url(#business-bg)"/>
+    <g transform="translate(18 18)">
+        <rect x="4" y="20" width="10" height="20" rx="4" fill="url(#business-bar)"/>
+        <rect x="20" y="10" width="12" height="30" rx="4" fill="url(#business-bar)" opacity="0.8"/>
+        <rect x="38" y="2" width="12" height="38" rx="4" fill="url(#business-bar)" opacity="0.7"/>
+        <polyline points="4 38 16 28 24 32 36 18 50 24" fill="none" stroke="#137a88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+        <circle cx="16" cy="28" r="2.4" fill="#fff"/>
+        <circle cx="24" cy="32" r="2.4" fill="#fff"/>
+        <circle cx="36" cy="18" r="2.4" fill="#fff"/>
+        <circle cx="50" cy="24" r="2.4" fill="#fff"/>
+    </g>
+</svg>

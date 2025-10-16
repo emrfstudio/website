@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+    <defs>
+        <linearGradient id="beauty-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f6cfa7"/>
+            <stop offset="100%" stop-color="#b58de4"/>
+        </linearGradient>
+        <linearGradient id="beauty-leaf" x1="20%" y1="10%" x2="80%" y2="90%">
+            <stop offset="0%" stop-color="#fff1de" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#f2b98d" stop-opacity="0.8"/>
+        </linearGradient>
+    </defs>
+    <rect width="80" height="80" rx="22" fill="url(#beauty-gradient)"/>
+    <g transform="translate(18 16)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 16c-2-9 5-14 12-16 2 5 2 9-2 13-2 2-5 3-8 3z" fill="url(#beauty-leaf)" stroke="#fdf4ea" stroke-width="1.5"/>
+        <path d="M16 19c-4.2 0-7.5 3.3-7.5 7.5s3.3 7.5 7.5 7.5c10 0 16-7 16-18.5" stroke="#fff" stroke-width="2.2"/>
+        <path d="M14.5 44c6.5-0.8 15-5.3 18-16" stroke="#3a1d47" stroke-width="2" opacity="0.2"/>
+        <circle cx="10" cy="33" r="2.4" fill="#fff" opacity="0.65"/>
+        <circle cx="32" cy="12" r="3" fill="#fff" opacity="0.45"/>
+    </g>
+</svg>

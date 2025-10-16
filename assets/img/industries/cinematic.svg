@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+    <defs>
+        <linearGradient id="cine-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d4d9ff"/>
+            <stop offset="100%" stop-color="#7f8cff"/>
+        </linearGradient>
+        <linearGradient id="cine-clap" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+            <stop offset="100%" stop-color="#dde1ff" stop-opacity="0.6"/>
+        </linearGradient>
+    </defs>
+    <rect width="80" height="80" rx="22" fill="url(#cine-bg)"/>
+    <g transform="translate(16 20)" stroke-linejoin="round">
+        <rect x="4" y="16" width="44" height="20" rx="4" fill="url(#cine-clap)" stroke="#6574ff" stroke-width="2"/>
+        <rect x="4" y="4" width="44" height="12" rx="3" fill="#3f4cff" stroke="#3f4cff" stroke-width="2"/>
+        <path d="M4 10l10-6 8 6 10-6 8 6 8-6" fill="none" stroke="#f0f3ff" stroke-width="2"/>
+        <rect x="10" y="21" width="8" height="6" rx="2" fill="#6574ff" opacity="0.35"/>
+        <rect x="24" y="21" width="8" height="6" rx="2" fill="#6574ff" opacity="0.35"/>
+        <rect x="38" y="21" width="8" height="6" rx="2" fill="#6574ff" opacity="0.35"/>
+        <circle cx="18" cy="8" r="2" fill="#f8f9ff" opacity="0.6"/>
+        <circle cx="30" cy="8" r="2" fill="#f8f9ff" opacity="0.6"/>
+    </g>
+</svg>

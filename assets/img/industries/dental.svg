@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+    <defs>
+        <linearGradient id="dental-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#9fb8ff"/>
+            <stop offset="100%" stop-color="#6f89ff"/>
+        </linearGradient>
+        <radialGradient id="dental-glow" cx="50%" cy="35%" r="60%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+            <stop offset="100%" stop-color="#e8f1ff" stop-opacity="0.2"/>
+        </radialGradient>
+    </defs>
+    <rect width="80" height="80" rx="22" fill="url(#dental-bg)"/>
+    <g transform="translate(16 14)">
+        <path d="M24 4c-7 0-13 5.5-13 12.5 0 12 5 21.5 5 26.5 0 3 1 5 3 6 4.5 0 4-8 7-8s2.5 8 7 8c2 0 3-3 3-6 0-5 5-14.5 5-26.5C41 9.5 35 4 28 4c-1.4 0-2.7.2-4 .6-1.3-.4-2.6-.6-4-.6z" fill="url(#dental-glow)" stroke="#f7fbff" stroke-width="1.8"/>
+        <path d="M20 18c2-2.4 5-4 8.5-4s6.5 1.6 8.5 4" stroke="#6b7cf5" stroke-linecap="round" stroke-width="2" opacity="0.4"/>
+        <circle cx="19" cy="13" r="2.2" fill="#fff" opacity="0.6"/>
+        <circle cx="30" cy="9" r="1.6" fill="#fff" opacity="0.5"/>
+    </g>
+</svg>
