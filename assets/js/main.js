@@ -17,6 +17,13 @@ const showcaseVideos = [
         youtubeId: 'SyyjKZ8laAU',
         category: 'fashion',
         tags: ['fashion', 'model', 'speedramp']
+    },
+    {
+        title: 'Adel Emam Model - Fashion Concept',
+        description: 'تصميم فيديو قصير يقدم موديل مستوحى من شخصية كلاسيكية بلمسة موضة حديثة.',
+        youtubeId: 'BQdqcOITg8Q',
+        category: 'fashion',
+        tags: ['fashion', 'model', 'concept']
     }
 ];
 
