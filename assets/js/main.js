@@ -10,6 +10,13 @@ const showcaseVideos = [
         title: 'Dr. Menan Samy - عيادات التجميل',
         description: 'مشاهد بالذكاء الاصطناعى مدموجه ب مونتاج خفيف.',
         youtubeId: 'ZHq2M-SLg_I'
+    },
+    {
+        title: 'Model Speedramp - Fashion Reel',
+        description: 'ريلز موضة سريع يبرز تفاصيل الستايل والحركة للقطاع التجارى فى الملابس.',
+        youtubeId: 'SyyjKZ8laAU',
+        category: 'fashion',
+        tags: ['fashion', 'model', 'speedramp']
     }
 ];
 
