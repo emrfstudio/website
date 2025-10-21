@@ -12,7 +12,7 @@ const showcaseVideos = [
         youtubeId: 'ZHq2M-SLg_I'
     },
     {
-        title: 'Model Speedramp - Fashion Reel',
+        title: 'Model Speedramp - Fashion Reel AI',
         description: 'ريلز موضة سريع يبرز تفاصيل الستايل والحركة للقطاع التجارى فى الملابس.',
         youtubeId: 'SyyjKZ8laAU',
         category: 'fashion',
