@@ -648,7 +648,34 @@ function setupInteractiveEffects() {
     const state = {
         pointerShift: 0,
         pointerScale: 0,
-        scrollScale: 0
+        scrollScale: 0,
+        sceneTiltX: 0,
+        sceneTiltY: 0,
+        pointerDepth: 0,
+        scrollDepth: 0
+    };
+
+    const updateSceneVariables = () => {
+        const tiltX = state.sceneTiltX;
+        const tiltY = state.sceneTiltY;
+        const depth = Math.max(0, state.pointerDepth + state.scrollDepth);
+        const softX = tiltX * 0.35;
+        const softY = tiltY * 0.35;
+        const strongX = tiltX * 0.65;
+        const strongY = tiltY * 0.85;
+        const glowBase = Math.min(
+            0.32,
+            Math.abs(tiltX) / 20 + Math.abs(tiltY) / 20 + state.scrollScale * 1.4
+        );
+
+        root.style.setProperty('--scene-tilt-x', `${tiltX.toFixed(2)}deg`);
+        root.style.setProperty('--scene-tilt-y', `${tiltY.toFixed(2)}deg`);
+        root.style.setProperty('--scene-tilt-x-soft', `${softX.toFixed(2)}deg`);
+        root.style.setProperty('--scene-tilt-y-soft', `${softY.toFixed(2)}deg`);
+        root.style.setProperty('--scene-tilt-x-strong', `${strongX.toFixed(2)}deg`);
+        root.style.setProperty('--scene-tilt-y-strong', `${strongY.toFixed(2)}deg`);
+        root.style.setProperty('--scene-depth', `${depth.toFixed(2)}px`);
+        root.style.setProperty('--scene-glow', glowBase.toFixed(3));
     };
 
     const apply = () => {
@@ -658,11 +685,16 @@ function setupInteractiveEffects() {
         lens.style.top = `${pointerY}px`;
 
         const ratioY = pointerY / window.innerHeight - 0.5;
+        const ratioX = pointerX / window.innerWidth - 0.5;
         state.pointerShift = ratioY * 40;
         state.pointerScale = Math.min(0.04, Math.abs(ratioY) * 0.08);
+        state.sceneTiltX = ratioY * -14;
+        state.sceneTiltY = ratioX * 16;
+        state.pointerDepth = Math.min(72, Math.hypot(ratioX, ratioY) * 120);
 
         root.style.setProperty('--bg-shift', `${state.pointerShift.toFixed(2)}px`);
         root.style.setProperty('--bg-scale', (state.pointerScale + state.scrollScale).toFixed(4));
+        updateSceneVariables();
     };
 
     const schedule = () => {
@@ -681,14 +713,20 @@ function setupInteractiveEffects() {
         lens.classList.remove('is-visible');
         state.pointerShift = 0;
         state.pointerScale = 0;
+        state.sceneTiltX = 0;
+        state.sceneTiltY = 0;
+        state.pointerDepth = 0;
         root.style.setProperty('--bg-shift', '0px');
         root.style.setProperty('--bg-scale', state.scrollScale.toFixed(4));
+        updateSceneVariables();
     });
 
     const updateScroll = () => {
         const docHeight = Math.max(document.body.scrollHeight - window.innerHeight, 1);
         state.scrollScale = Math.min(0.08, (window.scrollY / docHeight) * 0.08);
         root.style.setProperty('--bg-scale', (state.pointerScale + state.scrollScale).toFixed(4));
+        state.scrollDepth = Math.min(90, (window.scrollY / docHeight) * 80);
+        updateSceneVariables();
     };
 
     window.addEventListener('scroll', updateScroll, { passive: true });
@@ -699,6 +737,7 @@ function setupInteractiveEffects() {
     });
 
     updateScroll();
+    updateSceneVariables();
 }
 function observeSections(navList) {
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
