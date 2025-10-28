@@ -24,6 +24,13 @@ const showcaseVideos = [
         youtubeId: 'BQdqcOITg8Q',
         category: 'fashion',
         tags: ['fashion', 'model', 'concept']
+    },
+    {
+        title: 'Dentist Ad - Smile Makeover',
+        description: 'إعلان قصير لتجميل الأسنان يبرز التحول قبل/بعد ويعزز ثقة العيادة.',
+        youtubeId: 'Qqipc_pW-h0',
+        category: 'medical',
+        tags: ['dental', 'smile', 'medical', 'ads']
     }
 ];
 
