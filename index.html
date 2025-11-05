@@ -37,16 +37,7 @@
     </header>
 
     <main>
-        <section id="hero" class="hero" data-hero>
-            <div class="hero__backdrop" aria-hidden="true"></div>
-            <div class="hero__audio-toggle" data-audio-control>
-                <button type="button" class="audio-toggle" aria-pressed="false">
-                    <span class="audio-toggle__icon" aria-hidden="true"></span>
-                    <span class="audio-toggle__label">الصوت: متوقف</span>
-                </button>
-                <audio data-hero-audio preload="none" src="assets/audio/FakeLove.mp3"></audio>
-            </div>
-
+        <section id="hero" class="hero">
             <div class="container hero__stage glass-panel" data-reveal data-reveal-mode="scale" data-reveal-delay="0.05s">
                 <div class="hero__copy" data-reveal data-reveal-mode="left" data-reveal-delay="0.1s">
                     <p class="hero__eyebrow">AI Ads · Edit · Motion · VFX </p>
@@ -66,14 +57,7 @@
                     </div>
                 </div>
                 <div class="hero__visual" data-hero-art data-reveal data-reveal-mode="right" data-reveal-delay="0.3s">
-                    <canvas class="hero__canvas"
-                            data-sequence-target
-                            data-sequence-prefix="assets/img/statue/sequence/frame-"
-                            data-sequence-ext=".jpg"
-                            data-sequence-frames="24"
-                            data-sequence-pad="2"
-                            aria-hidden="true"></canvas>
-                    <img class="hero__fallback" data-sequence-fallback src="assets/img/statue/hero-placeholder.png" alt="تمثال ثلاثي الأبعاد يمثل هوية الاستوديو" loading="lazy">
+                    <img class="hero__image" src="assets/img/statue/hero-placeholder.png" alt="تمثال ثلاثي الأبعاد يمثل هوية الاستوديو" loading="lazy">
                 </div>
             </div>
         </section>
@@ -368,7 +352,6 @@
         </div>
     </footer>
 
-    <div class="cursor-lens" data-cursor-lens aria-hidden="true"></div>
     <script src="assets/js/main.js" defer></script>
 </body>
 </html>
