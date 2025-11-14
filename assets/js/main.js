@@ -327,20 +327,7 @@ function createMediaCard(item, delayIndex = 0) {
 
 function createMediaElement(item) {
     if (item.youtubeId) {
-        const frame = document.createElement('div');
-        frame.className = 'media-card__frame';
-
-        const iframe = document.createElement('iframe');
-        iframe.className = 'media-card__embed';
-        iframe.src = `https://www.youtube.com/embed/${item.youtubeId}?rel=0&modestbranding=1&playsinline=1`;
-        iframe.title = item.title ?? 'YouTube video';
-        iframe.loading = 'lazy';
-        iframe.allow =
-            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframe.allowFullscreen = true;
-
-        frame.appendChild(iframe);
-        return frame;
+        return createYoutubePlaceholder(item);
     }
 
     if (!item.src) {
@@ -365,6 +352,78 @@ function createMediaElement(item) {
     video.appendChild(fallback);
 
     return video;
+}
+
+function createYoutubePlaceholder(item) {
+    const frame = document.createElement('div');
+    frame.className = 'media-card__frame';
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'media-card__placeholder';
+
+    const label = item.title ? `تشغيل الفيديو ${item.title}` : 'تشغيل الفيديو';
+    trigger.setAttribute('aria-label', label);
+
+    const thumb = document.createElement('img');
+    thumb.className = 'media-card__thumb';
+    thumb.loading = 'lazy';
+    thumb.decoding = 'async';
+    thumb.alt = item.title ? `معاينة فيديو ${item.title}` : 'معاينة فيديو';
+    thumb.src = getYoutubeThumbnailUrl(item.youtubeId);
+    thumb.referrerPolicy = 'no-referrer';
+    trigger.appendChild(thumb);
+
+    const play = document.createElement('span');
+    play.className = 'media-card__play';
+    play.setAttribute('aria-hidden', 'true');
+    trigger.appendChild(play);
+
+    const srOnly = document.createElement('span');
+    srOnly.className = 'sr-only';
+    srOnly.textContent = label;
+    trigger.appendChild(srOnly);
+
+    trigger.addEventListener('click', () => {
+        const iframe = createYoutubeIframe(item, true);
+        frame.replaceChildren(iframe);
+        iframe.focus();
+    });
+
+    frame.appendChild(trigger);
+    return frame;
+}
+
+function createYoutubeIframe(item, autoplay = false) {
+    const iframe = document.createElement('iframe');
+    iframe.className = 'media-card__embed';
+
+    const params = new URLSearchParams({
+        rel: '0',
+        modestbranding: '1',
+        playsinline: '1',
+        enablejsapi: '0'
+    });
+
+    if (autoplay) {
+        params.set('autoplay', '1');
+        iframe.loading = 'eager';
+    } else {
+        iframe.loading = 'lazy';
+    }
+
+    iframe.src = `https://www.youtube.com/embed/${item.youtubeId}?${params.toString()}`;
+    iframe.title = item.title ?? 'YouTube video';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allow =
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+
+    return iframe;
+}
+
+function getYoutubeThumbnailUrl(id) {
+    return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 }
 
 function deriveMimeType(path) {
