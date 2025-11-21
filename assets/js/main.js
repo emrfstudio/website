@@ -2,6 +2,13 @@
 
 const showcaseVideos = [
     {
+        title: 'ريل مؤسسة عربيات',
+        description: 'ريل سريع لمؤسسة عربيات يبرز الهوية والحركة.',
+        youtubeId: 'b02eac8Gjpc',
+        category: 'cinematic',
+        tags: ['arabyat', 'foundation', 'reel']
+    },
+    {
         title: 'إعلان مشروب True Blood',
         description: 'إعلان قصير لمشروب True Blood بستايل سينمائي وحركة سريعة لشد الانتباه.',
         youtubeId: 'FEX6s_6WlTk',
