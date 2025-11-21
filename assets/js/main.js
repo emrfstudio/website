@@ -4,7 +4,7 @@ const showcaseVideos = [
     {
         title: 'فيديو مدرس',
         description: 'فيديو قصير لمدرس يشرح بطريقة بسيطة وحضور واضح.',
-        src: 'https://drive.google.com/uc?export=download&id=1dg7QsGkFk4p4CQYbmWLDJaTxDG7HQyXW',
+        youtubeId: 's55hCdpmZSQ',
         category: 'education',
         tags: ['teacher', 'education', 'course']
     },
