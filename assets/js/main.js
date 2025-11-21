@@ -17,7 +17,7 @@ const showcaseVideos = [
     },
     {
         title: 'ريل تبييض الأسنان',
-        description: 'ريل قصير لتبييض الأسنان يبرز النتيجة بشكل سريع وواضح.',
+        description: 'جزء بسيط من فيديو لدكتور بيتكلم عن تبييض الأسنان .',
         youtubeId: 'LL5_I8knbtU',
         category: 'medical',
         tags: ['dental', 'whitening', 'reel']
