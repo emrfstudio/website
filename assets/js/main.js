@@ -10,8 +10,8 @@ const showcaseVideos = [
     },
     {
         title: 'ريل مدرس',
-        description: 'ريل سريع لمدرس يعلن مواعيد الدروس للطلاب بشكل واضح.',
-        src: 'https://drive.google.com/uc?export=download&id=1z8fU1QT6PG2JcmDp5cmhhtcT8dYgn9Xl',
+        description: 'ريل لمدرس يعلن مواعيد الدروس للطلاب بشكل واضح.',
+        youtubeId: 'm7pJqbCQ7CM',
         category: 'education',
         tags: ['teacher', 'education', 'reel']
     },
@@ -461,6 +461,7 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
+
 
 
 
