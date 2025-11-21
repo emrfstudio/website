@@ -16,6 +16,13 @@ const showcaseVideos = [
         tags: ['teacher', 'education', 'reel']
     },
     {
+        title: 'ريل تبييض الأسنان',
+        description: 'ريل قصير لتبييض الأسنان يبرز النتيجة بشكل سريع وواضح.',
+        youtubeId: 'LL5_I8knbtU',
+        category: 'medical',
+        tags: ['dental', 'whitening', 'reel']
+    },
+    {
         title: 'ريل مؤسسة عربيات',
         description: 'ريل سريع لمؤسسة عربيات يبرز الهوية والحركة.',
         youtubeId: 'b02eac8Gjpc',
