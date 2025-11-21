@@ -2,6 +2,13 @@
 
 const showcaseVideos = [
     {
+        title: 'إعلان مشروب True Blood',
+        description: 'إعلان قصير لمشروب True Blood بستايل سينمائي وحركة سريعة لشد الانتباه.',
+        youtubeId: 'FEX6s_6WlTk',
+        category: 'cinematic',
+        tags: ['true blood', 'drink', 'ad']
+    },
+    {
         title: 'Dr. Noha - AI بالكامل',
         description: 'المشاهد مصنوعه بالكامل بالذكاء الاصطناعى ما عدا التأثيرات البصريه.',
         youtubeId: '4A7QFUq53sI'
@@ -433,6 +440,7 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
+
 
 
 
