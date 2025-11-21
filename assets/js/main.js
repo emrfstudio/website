@@ -2,6 +2,20 @@
 
 const showcaseVideos = [
     {
+        title: 'فيديو مدرس',
+        description: 'فيديو قصير لمدرس يشرح بطريقة بسيطة وحضور واضح.',
+        src: 'https://drive.google.com/uc?export=download&id=1dg7QsGkFk4p4CQYbmWLDJaTxDG7HQyXW',
+        category: 'education',
+        tags: ['teacher', 'education', 'course']
+    },
+    {
+        title: 'ريل مدرس',
+        description: 'ريل سريع لمدرس يعلن مواعيد الدروس للطلاب بشكل واضح.',
+        src: 'https://drive.google.com/uc?export=download&id=1z8fU1QT6PG2JcmDp5cmhhtcT8dYgn9Xl',
+        category: 'education',
+        tags: ['teacher', 'education', 'reel']
+    },
+    {
         title: 'ريل مؤسسة عربيات',
         description: 'ريل سريع لمؤسسة عربيات يبرز الهوية والحركة.',
         youtubeId: 'b02eac8Gjpc',
