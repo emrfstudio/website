@@ -16,6 +16,13 @@ const showcaseVideos = [
         tags: ['teacher', 'education', 'reel']
     },
     {
+        title: 'ريل شركة عقارات',
+        description: 'ريل لشركة عقارات يبرز اللقطات السريعة للمشروع والعلامة.',
+        youtubeId: 'B_uKtq_-Cs0',
+        category: 'cinematic',
+        tags: ['real estate', 'property', 'reel']
+    },
+    {
         title: 'ريل تبييض الأسنان',
         description: 'جزء بسيط من فيديو لدكتور بيتكلم عن تبييض الأسنان .',
         youtubeId: 'LL5_I8knbtU',
