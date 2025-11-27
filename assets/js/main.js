@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 const showcaseVideos = [
     {
@@ -18,7 +18,7 @@ const showcaseVideos = [
     {
         title: 'فيديو انيميشن',
         description: 'فيديو انيميشن من صُنعى بالكامل يظهر استمرارية الشخصيات وكل أساليب وستايلات الجرافيك.',
-        youtubeId: 'bAwMyY7vb-M',
+        youtubeId: 'uorY2amsE_s',
         category: 'cinematic',
         tags: ['animation', 'characters', 'graphics']
     },
@@ -482,6 +482,7 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
+
 
 
 
