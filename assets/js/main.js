@@ -16,6 +16,13 @@ const showcaseVideos = [
         tags: ['teacher', 'education', 'reel']
     },
     {
+        title: 'فيديو انيميشن',
+        description: 'فيديو انيميشن من صُنعى بالكامل يظهر استمرارية الشخصيات وكل أساليب وستايلات الجرافيك.',
+        youtubeId: 'bAwMyY7vb-M',
+        category: 'cinematic',
+        tags: ['animation', 'characters', 'graphics']
+    },
+    {
         title: 'ريل شركة عقارات',
         description: 'ريل لشركة عقارات يبرز اللقطات السريعة للمشروع والعلامة.',
         youtubeId: 'B_uKtq_-Cs0',
