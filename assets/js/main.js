@@ -30,6 +30,13 @@ const showcaseVideos = [
         tags: ['real estate', 'property', 'reel']
     },
     {
+        title: 'Engora Real Estate Ad',
+        description: 'Short ad for Engora real estate company.',
+        youtubeId: 'rVBxvUxl934',
+        category: 'cinematic',
+        tags: ['engora', 'real estate', 'ad']
+    },
+    {
         title: 'ريل تبييض الأسنان',
         description: 'جزء بسيط من فيديو لدكتور بيتكلم عن تبييض الأسنان .',
         youtubeId: 'LL5_I8knbtU',
