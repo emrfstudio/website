@@ -298,7 +298,11 @@ function renderVideoGallery() {
         groups.get(categoryKey).items.push(item);
     });
 
-    const orderedKeys = [...VIDEO_CATEGORY_RULES.map((rule) => rule.key), FALLBACK_VIDEO_CATEGORY.key];
+    const orderedKeys = [
+        ...VIDEO_CATEGORY_RULES.map((rule) => rule.key).filter((key) => key !== 'fashion'),
+        FALLBACK_VIDEO_CATEGORY.key,
+        'fashion'
+    ];
 
     const orderedGroups = orderedKeys
         .map((key) => groups.get(key))
