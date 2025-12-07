@@ -767,7 +767,6 @@ ol {
     position: relative;
     aspect-ratio: 16 / 9;
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.16);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(40, 40, 56, 0.72));
     overflow: hidden;
     transform-origin: center 80%;
@@ -782,9 +781,6 @@ ol {
         )
         scale(calc(1 + var(--hero-progress, 0) * 0.55));
     transform-style: preserve-3d;
-    box-shadow:
-        0 56px 92px rgba(0, 0, 0, 0.55),
-        0 0 calc(130px * var(--scene-glow)) rgba(212, 180, 143, 0.3);
     max-width: clamp(360px, 45vw, 620px);
     margin-inline-start: auto;
     z-index: 1;
@@ -805,7 +801,6 @@ ol {
     content: '';
     position: absolute;
     inset: 12%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: calc(var(--radius-lg) * 0.9);
     pointer-events: none;
     mix-blend-mode: screen;
