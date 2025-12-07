@@ -765,7 +765,7 @@ ol {
 .hero__visual {
     flex: 1;
     position: relative;
-    aspect-ratio: 7 / 9;
+    aspect-ratio: 16 / 9;
     border-radius: var(--radius-lg);
     border: 1px solid rgba(255, 255, 255, 0.16);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(40, 40, 56, 0.72));
@@ -812,12 +812,21 @@ ol {
     opacity: calc(0.34 + var(--hero-progress, 0) * 0.4 + var(--scene-glow) * 0.22);
 }
 
-.hero__image {
+.hero__video {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+.hero__video-frame {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    border: 0;
+    border-radius: inherit;
+    background: #000;
     transform-origin: center;
     transform:
         translateZ(calc(60px + var(--scene-depth) * 0.12))
@@ -1696,7 +1705,7 @@ ol {
 
     .hero__visual {
         width: min(420px, 88%);
-        aspect-ratio: 3 / 4;
+        aspect-ratio: 16 / 9;
         margin: 0 auto;
     }
 
