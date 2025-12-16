@@ -37,6 +37,13 @@ const showcaseVideos = [
         tags: ['engora', 'real estate', 'ad']
     },
     {
+        title: 'إيديت فارس الحصان',
+        description: 'فيديو إيديت قصير لشخص راكب حصان بستايل سينمائي وحركة سريعة.',
+        youtubeId: 'F7MNLdl6mhk',
+        category: 'cinematic',
+        tags: ['horse', 'ride', 'cinematic', 'edit']
+    },
+    {
         title: 'ريل تبييض الأسنان',
         description: 'جزء بسيط من فيديو لدكتور بيتكلم عن تبييض الأسنان .',
         youtubeId: 'LL5_I8knbtU',
