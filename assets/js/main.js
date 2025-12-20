@@ -37,6 +37,20 @@ const showcaseVideos = [
         tags: ['engora', 'real estate', 'ad']
     },
     {
+        title: 'إعلان شقق سكنية',
+        description: 'فيديو إعلان قصير عن شقق سكنية يبرز اللقطات السريعة والمساحات.',
+        youtubeId: 'ZoL7wWQE1tA',
+        category: 'cinematic',
+        tags: ['real estate', 'apartments', 'ad', 'promo']
+    },
+    {
+        title: 'إعلان قطعة أرض صحراوية',
+        description: 'إعلان قصير لقطعة أرض صحراوية يبرز المساحة والموقع وخيارات الاستثمار.',
+        youtubeId: 'UuolXgxDlfQ',
+        category: 'cinematic',
+        tags: ['real estate', 'land', 'desert', 'ad']
+    },
+    {
         title: 'إيديت فارس الحصان',
         description: 'فيديو إيديت قصير لشخص راكب حصان بستايل سينمائي وحركة سريعة.',
         youtubeId: 'F7MNLdl6mhk',
@@ -500,8 +514,6 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
-
-
 
 
 
