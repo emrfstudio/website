@@ -51,6 +51,20 @@ const showcaseVideos = [
         tags: ['real estate', 'land', 'desert', 'ad']
     },
     {
+        title: 'إعلان محل سريع ومميز',
+        description: 'إعلان قصير لمحل بطريقة مميزة وسريعة يركز على الحركة والخدمة.',
+        youtubeId: '4YUuDbyk_Jg',
+        category: 'cinematic',
+        tags: ['shop', 'retail', 'ad', 'promo']
+    },
+    {
+        title: 'إعلان Bowling Trailer متنقلة',
+        description: 'إعلان سريع لـ bowling trailer متنقلة يبرز التجربة المتنقلة والحماس.',
+        youtubeId: '9NJDEZxmWng',
+        category: 'cinematic',
+        tags: ['bowling', 'trailer', 'mobile', 'ad']
+    },
+    {
         title: 'إيديت فارس الحصان',
         description: 'فيديو إيديت قصير لشخص راكب حصان بستايل سينمائي وحركة سريعة.',
         youtubeId: 'F7MNLdl6mhk',
@@ -63,6 +77,13 @@ const showcaseVideos = [
         youtubeId: 'LL5_I8knbtU',
         category: 'medical',
         tags: ['dental', 'whitening', 'reel']
+    },
+    {
+        title: 'إعلان دكتور أسنان',
+        description: 'إعلان سريع لدكتور أسنان يبرز الخدمات ونتائج الابتسامة.',
+        youtubeId: '1VbDT7sx9eQ',
+        category: 'medical',
+        tags: ['dental', 'doctor', 'clinic', 'ad']
     },
     {
         title: 'ريل مؤسسة عربيات',
@@ -514,9 +535,6 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
-
-
-
 
 
 
