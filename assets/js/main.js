@@ -2,6 +2,13 @@
 
 const showcaseVideos = [
     {
+        title: 'إعلان مطعم - ستايل كرييتف',
+        description: 'إعلان مطعم سريع وممتع بإيقاع بصري يجذب الانتباه ويبرز تجربة الأكل.',
+        youtubeId: 'v9BjJFTXLkQ',
+        category: 'cinematic',
+        tags: ['restaurant', 'food', 'ad', 'creative', 'reel']
+    },
+    {
         title: 'فيديو مدرس',
         description: 'فيديو قصير لمدرس يشرح بطريقة بسيطة وحضور واضح.',
         youtubeId: 's55hCdpmZSQ',
@@ -84,6 +91,27 @@ const showcaseVideos = [
         youtubeId: '1VbDT7sx9eQ',
         category: 'medical',
         tags: ['dental', 'doctor', 'clinic', 'ad']
+    },
+    {
+        title: 'جلسة تنظيف - ستايل كرييتف',
+        description: 'فيديو قصير لجلسة تنظيف بطريقة كرييتف وممتعة يبرز التفاصيل بأسلوب جذاب.',
+        youtubeId: '9HsxzQ60hXI',
+        category: 'medical',
+        tags: ['dental', 'cleaning', 'clinic', 'medical', 'shorts']
+    },
+    {
+        title: 'دكتور يتكلم عن جرثومة المعدة',
+        description: 'فيديو قصير بأسلوب ممتع يشرح جرثومة المعدة بطريقة واضحة وسهلة.',
+        youtubeId: 'pi2FuCpumQc',
+        category: 'medical',
+        tags: ['medical', 'doctor', 'gastro', 'h-pylori', 'shorts']
+    },
+    {
+        title: 'موشن Eye Bags و Dark Circles',
+        description: 'فيديو موشن طبي ممتع يشرح حالة الانتفاخات والهالات السوداء تحت العين بشكل كرييتف.',
+        youtubeId: '5UhqwmNW0r0',
+        category: 'medical',
+        tags: ['medical', 'dermatology', 'eye bags', 'dark circles', 'motion', 'shorts']
     },
     {
         title: 'ريل مؤسسة عربيات',
@@ -535,11 +563,6 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
-
-
-
-
-
 
 
 
