@@ -9,6 +9,13 @@ const showcaseVideos = [
         tags: ['restaurant', 'food', 'ad', 'creative', 'reel']
     },
     {
+        title: 'إعلان مطعم - طريقة مختلفة وذكية',
+        description: 'إعلان مطعم قصير بأسلوب مختلف وذكي يبرز الفكرة والإيقاع البصري بشكل جذاب.',
+        youtubeId: '1dQtYD8WBvI',
+        category: 'cinematic',
+        tags: ['restaurant', 'food', 'ad', 'cinematic', 'shorts']
+    },
+    {
         title: 'فيديو مدرس',
         description: 'فيديو قصير لمدرس يشرح بطريقة بسيطة وحضور واضح.',
         youtubeId: 's55hCdpmZSQ',
@@ -51,6 +58,13 @@ const showcaseVideos = [
         tags: ['real estate', 'apartments', 'ad', 'promo']
     },
     {
+        title: 'إعلان شقة - طريقة مختلفة وذكية',
+        description: 'إعلان قصير لشقة بأسلوب مختلف وذكي يبرز التفاصيل المهمة بشكل جذاب.',
+        youtubeId: '3icWqJhZhPU',
+        category: 'cinematic',
+        tags: ['real estate', 'apartment', 'ad', 'smart', 'shorts']
+    },
+    {
         title: 'إعلان قطعة أرض صحراوية',
         description: 'إعلان قصير لقطعة أرض صحراوية يبرز المساحة والموقع وخيارات الاستثمار.',
         youtubeId: 'UuolXgxDlfQ',
@@ -84,6 +98,13 @@ const showcaseVideos = [
         youtubeId: 'a4JtnCYXP9E',
         category: 'cinematic',
         tags: ['sea', 'company', 'team', 'intro', 'shorts']
+    },
+    {
+        title: 'محامي بيتكلم عن نشر الشائعات',
+        description: 'فيديو قصير لمحامي يشرح خطورة نشر الشائعات بطريقة مباشرة وسهلة.',
+        youtubeId: 'M6BUnpOEaRw',
+        category: 'lawyers_creators',
+        tags: ['lawyer', 'legal', 'rumors', 'awareness', 'shorts']
     },
     {
         title: 'ريل تبييض الأسنان',
@@ -241,6 +262,22 @@ const VIDEO_CATEGORY_RULES = [
             text.includes('تعليمي') ||
             text.includes('دورة') ||
             text.includes('دورات')
+    },
+    {
+        key: 'lawyers_creators',
+        label: 'المحامين وصناع المحتوى',
+        matches: (text) =>
+            text.includes('lawyer') ||
+            text.includes('legal') ||
+            text.includes('law') ||
+            text.includes('محام') ||
+            text.includes('محامي') ||
+            text.includes('قانون') ||
+            text.includes('قانوني') ||
+            text.includes('صانع محتوى') ||
+            text.includes('صناع المحتوى') ||
+            text.includes('creator') ||
+            text.includes('influencer')
     }
 ];
 
@@ -584,7 +621,4 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
-
-
-
 
