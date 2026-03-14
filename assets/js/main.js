@@ -128,6 +128,13 @@ const showcaseVideos = [
         tags: ['medical', 'cosmetic', 'patient', 'dermatology', 'shorts']
     },
     {
+        title: 'الحج محمد سالم - تجربة مع دكتور اندرو',
+        description: 'فيديو تعريفي يروي فيه الحج محمد سالم مشاكله وتجربته العلاجية مع دكتور اندرو.',
+        youtubeId: '_l4ncMvfYQA',
+        category: 'medical',
+        tags: ['medical', 'patient', 'testimonial', 'doctor', 'shorts']
+    },
+    {
         title: 'ريل مؤسسة عربيات',
         description: 'ريل سريع لمؤسسة عربيات يبرز الهوية والحركة.',
         youtubeId: 'b02eac8Gjpc',
@@ -577,7 +584,6 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
-
 
 
 
