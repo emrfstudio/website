@@ -114,6 +114,13 @@ const showcaseVideos = [
         tags: ['medical', 'dermatology', 'eye bags', 'dark circles', 'motion', 'shorts']
     },
     {
+        title: 'المشاكل التجميلية لدى المريضة',
+        description: 'فيديو قصير يوضح أبرز المشاكل التجميلية لدى المريضة بأسلوب ممتع وسهل الفهم.',
+        youtubeId: 'WZy2qclRUJ0',
+        category: 'medical',
+        tags: ['medical', 'cosmetic', 'patient', 'dermatology', 'shorts']
+    },
+    {
         title: 'ريل مؤسسة عربيات',
         description: 'ريل سريع لمؤسسة عربيات يبرز الهوية والحركة.',
         youtubeId: 'b02eac8Gjpc',
@@ -563,7 +570,6 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
-
 
 
 
