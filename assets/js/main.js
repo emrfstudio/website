@@ -79,6 +79,13 @@ const showcaseVideos = [
         tags: ['horse', 'ride', 'cinematic', 'edit']
     },
     {
+        title: 'فيديو تعريفي لشباب شركة SEA',
+        description: 'فيديو تعريفي قصير يعرض شباب شركة SEA بأسلوب ممتع وحضور بصري سريع.',
+        youtubeId: 'a4JtnCYXP9E',
+        category: 'cinematic',
+        tags: ['sea', 'company', 'team', 'intro', 'shorts']
+    },
+    {
         title: 'ريل تبييض الأسنان',
         description: 'جزء بسيط من فيديو لدكتور بيتكلم عن تبييض الأسنان .',
         youtubeId: 'LL5_I8knbtU',
@@ -570,7 +577,6 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
-
 
 
 
