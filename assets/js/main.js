@@ -194,6 +194,48 @@ const showcaseVideos = [
         tags: ['fashion', 'model', 'concept']
     },
     {
+        title: 'macdonald',
+        description: 'فيديو يوتيوب طويل ضمن أعمال المعرض.',
+        youtubeId: '9lQhpGcrDVA',
+        category: 'youtube_long',
+        tags: ['macdonald', 'youtube long', 'long video']
+    },
+    {
+        title: 'IKEA',
+        description: 'فيديو يوتيوب طويل ضمن أعمال المعرض.',
+        youtubeId: 'fNNj4rcpXPg',
+        category: 'youtube_long',
+        tags: ['IKEA', 'youtube long', 'long video']
+    },
+    {
+        title: 'iphone',
+        description: 'فيديو يوتيوب طويل ضمن أعمال المعرض.',
+        youtubeId: 'd633FvDxaDc',
+        category: 'youtube_long',
+        tags: ['iphone', 'youtube long', 'long video']
+    },
+    {
+        title: 'حكاية اوبر',
+        description: 'فيديو يوتيوب طويل ضمن أعمال المعرض.',
+        youtubeId: '5PYCt_rzzRA',
+        category: 'youtube_long',
+        tags: ['uber', 'story', 'youtube long', 'long video']
+    },
+    {
+        title: 'حرب الكولا',
+        description: 'فيديو يوتيوب طويل ضمن أعمال المعرض.',
+        youtubeId: 'mRZz-Lnx6Qw',
+        category: 'youtube_long',
+        tags: ['cola', 'war', 'youtube long', 'long video']
+    },
+    {
+        title: 'cat',
+        description: 'فيديو يوتيوب طويل ضمن أعمال المعرض.',
+        youtubeId: 'k9sY6JLUqq4',
+        category: 'youtube_long',
+        tags: ['cat', 'youtube long', 'long video']
+    },
+    {
         title: 'Dentist Ad - Smile Makeover',
         description: 'إعلان قصير لتجميل الأسنان يبرز التحول قبل/بعد ويعزز ثقة العيادة.',
         youtubeId: 'Qqipc_pW-h0',
@@ -247,6 +289,19 @@ const VIDEO_CATEGORY_RULES = [
             text.includes('كليب') ||
             text.includes('clip') ||
             text.includes('music video')
+    },
+    {
+        key: 'youtube_long',
+        label: 'فيديوهات يوتيوب طويله',
+        showWhenEmpty: true,
+        emptyText: 'سيتم إضافة فيديوهات يوتيوب طويله هنا قريبًا.',
+        matches: (text) =>
+            text.includes('youtube long') ||
+            text.includes('long video') ||
+            text.includes('فيديو يوتيوب طويل') ||
+            text.includes('فيديوهات يوتيوب طويلة') ||
+            text.includes('فيديوهات يوتيوب طويله') ||
+            text.includes('يوتيوب طويل')
     },
     {
         key: 'education',
@@ -422,15 +477,29 @@ function renderVideoGallery() {
 
     showcaseVideos.forEach((item) => {
         const categoryKey = detectVideoCategory(item);
-        const label = getVideoCategoryLabel(categoryKey);
+        const categoryRule = VIDEO_CATEGORY_RULES.find((rule) => rule.key === categoryKey);
+        const label = categoryRule ? categoryRule.label : getVideoCategoryLabel(categoryKey);
         if (!groups.has(categoryKey)) {
             groups.set(categoryKey, {
                 key: categoryKey,
                 label,
+                emptyText: categoryRule?.emptyText,
                 items: []
             });
         }
         groups.get(categoryKey).items.push(item);
+    });
+
+    VIDEO_CATEGORY_RULES.forEach((rule) => {
+        if (!rule.showWhenEmpty || groups.has(rule.key)) {
+            return;
+        }
+        groups.set(rule.key, {
+            key: rule.key,
+            label: rule.label,
+            emptyText: rule.emptyText,
+            items: []
+        });
     });
 
     const orderedKeys = [
@@ -442,7 +511,7 @@ function renderVideoGallery() {
     const orderedGroups = orderedKeys
         .map((key) => groups.get(key))
         .filter(Boolean)
-        .filter((group) => group.items.length);
+        .filter((group) => group.items.length || group.emptyText);
 
     if (!orderedGroups.length) {
         const emptyState = document.createElement('p');
@@ -467,10 +536,17 @@ function renderVideoGallery() {
         const grid = document.createElement('div');
         grid.className = 'media-grid';
 
-        group.items.forEach((item, itemIndex) => {
-            const card = createMediaCard(item, itemIndex);
-            grid.appendChild(card);
-        });
+        if (group.items.length) {
+            group.items.forEach((item, itemIndex) => {
+                const card = createMediaCard(item, itemIndex);
+                grid.appendChild(card);
+            });
+        } else if (group.emptyText) {
+            const emptyGroup = document.createElement('p');
+            emptyGroup.className = 'media-group__empty';
+            emptyGroup.textContent = group.emptyText;
+            grid.appendChild(emptyGroup);
+        }
 
         section.appendChild(grid);
         gallery.appendChild(section);
@@ -517,6 +593,9 @@ function createMediaElement(item) {
     if (item.youtubeId) {
         const frame = document.createElement('div');
         frame.className = 'media-card__frame';
+        if (item.category === 'youtube_long') {
+            frame.classList.add('media-card__frame--wide');
+        }
 
         const iframe = document.createElement('iframe');
         iframe.className = 'media-card__embed';
@@ -621,4 +700,3 @@ function observeSections(navList) {
 
     sections.forEach((section) => observer.observe(section));
 }
-

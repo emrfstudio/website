@@ -926,6 +926,15 @@ ol {
     gap: clamp(20px, 3vw, 32px);
 }
 
+.media-group__empty {
+    margin: 0;
+    padding: 1.15rem 1.25rem;
+    border: 1px dashed rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.045);
+}
+
 .media-card {
     display: flex;
     flex-direction: column;
@@ -979,6 +988,10 @@ ol {
 .media-card__frame {
     aspect-ratio: 9 / 16;
     display: block;
+}
+
+.media-card__frame--wide {
+    aspect-ratio: 16 / 9;
 }
 
 .media-card__embed {
