@@ -341,11 +341,20 @@ const FALLBACK_VIDEO_CATEGORY = {
     label: 'مشاريع متنوعة'
 };
 
-const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+const GALLERY_PAGE_SIZE = 6;
+const FEATURED_VIDEO_IDS = [
+    'v9BjJFTXLkQ',
+    'KgHGTdvQ59Q',
+    '4A7QFUq53sI',
+    's55hCdpmZSQ',
+    'SyyjKZ8laAU',
+    'M6BUnpOEaRw'
+];
 
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     setCurrentYear();
+    setupLiteYoutubeEmbeds(document);
     renderVideoGallery();
 });
 
@@ -386,6 +395,13 @@ function setupNavigation() {
         }
         if (!navList.contains(target) && target !== navToggle && !navToggle.contains(target)) {
             closeMenu();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && navList.dataset.open === 'true') {
+            closeMenu();
+            navToggle.focus();
         }
     });
 
@@ -463,6 +479,8 @@ function renderVideoGallery() {
         return;
     }
 
+    document.body.classList.add('home-page');
+
     gallery.innerHTML = '';
 
     if (!Array.isArray(showcaseVideos) || !showcaseVideos.length) {
@@ -473,92 +491,141 @@ function renderVideoGallery() {
         return;
     }
 
-    const groups = new Map();
+    const groups = buildGalleryGroups();
 
-    showcaseVideos.forEach((item) => {
-        const categoryKey = detectVideoCategory(item);
-        const categoryRule = VIDEO_CATEGORY_RULES.find((rule) => rule.key === categoryKey);
-        const label = categoryRule ? categoryRule.label : getVideoCategoryLabel(categoryKey);
-        if (!groups.has(categoryKey)) {
-            groups.set(categoryKey, {
-                key: categoryKey,
-                label,
-                emptyText: categoryRule?.emptyText,
-                items: []
-            });
-        }
-        groups.get(categoryKey).items.push(item);
-    });
-
-    VIDEO_CATEGORY_RULES.forEach((rule) => {
-        if (!rule.showWhenEmpty || groups.has(rule.key)) {
-            return;
-        }
-        groups.set(rule.key, {
-            key: rule.key,
-            label: rule.label,
-            emptyText: rule.emptyText,
-            items: []
-        });
-    });
-
-    const orderedKeys = [
-        ...VIDEO_CATEGORY_RULES.map((rule) => rule.key).filter((key) => key !== 'fashion'),
-        FALLBACK_VIDEO_CATEGORY.key,
-        'fashion'
-    ];
-
-    const orderedGroups = orderedKeys
-        .map((key) => groups.get(key))
-        .filter(Boolean)
-        .filter((group) => group.items.length || group.emptyText);
-
-    if (!orderedGroups.length) {
+    if (!groups.length) {
         const emptyState = document.createElement('p');
         emptyState.textContent = 'أضِف أعمال الفيديو إلى القائمة داخل main.js ليظهر المعرض هنا.';
-        emptyState.setAttribute('data-reveal', '');
         gallery.appendChild(emptyState);
         return;
     }
 
-    orderedGroups.forEach((group, groupIndex) => {
-        const section = document.createElement('section');
-        section.className = 'media-group';
-        section.setAttribute('data-reveal', '');
-        const groupDelay = (0.05 + groupIndex * 0.15).toFixed(2);
-        section.dataset.revealDelay = `${groupDelay}s`;
+    let activeKey = groups[0].key;
+    let visibleCount = GALLERY_PAGE_SIZE;
 
-        const heading = document.createElement('h3');
-        heading.className = 'media-group__title';
-        heading.textContent = group.label;
-        section.appendChild(heading);
+    const toolbar = document.createElement('div');
+    toolbar.className = 'media-gallery__toolbar';
 
-        const grid = document.createElement('div');
-        grid.className = 'media-grid';
+    const filters = document.createElement('div');
+    filters.className = 'media-filters';
+    filters.setAttribute('aria-label', 'تصفية معرض الأعمال');
 
-        if (group.items.length) {
-            group.items.forEach((item, itemIndex) => {
-                const card = createMediaCard(item, itemIndex);
-                grid.appendChild(card);
-            });
-        } else if (group.emptyText) {
-            const emptyGroup = document.createElement('p');
-            emptyGroup.className = 'media-group__empty';
-            emptyGroup.textContent = group.emptyText;
-            grid.appendChild(emptyGroup);
-        }
+    const status = document.createElement('p');
+    status.className = 'media-gallery__status';
+    status.setAttribute('aria-live', 'polite');
 
-        section.appendChild(grid);
-        gallery.appendChild(section);
+    const heading = document.createElement('h3');
+    heading.className = 'media-gallery__active-title';
+
+    const grid = document.createElement('div');
+    grid.className = 'media-grid';
+    grid.id = 'portfolio-grid';
+
+    const loadMore = document.createElement('button');
+    loadMore.className = 'media-gallery__more';
+    loadMore.type = 'button';
+    loadMore.textContent = 'عرض المزيد من الأعمال';
+
+    const filterButtons = new Map();
+
+    groups.forEach((group) => {
+        const button = document.createElement('button');
+        button.className = 'media-filter';
+        button.type = 'button';
+        button.textContent = group.label;
+        button.setAttribute('aria-controls', grid.id);
+        button.setAttribute('aria-pressed', String(group.key === activeKey));
+        button.addEventListener('click', () => {
+            if (activeKey === group.key) {
+                return;
+            }
+            activeKey = group.key;
+            visibleCount = GALLERY_PAGE_SIZE;
+            paintGallery();
+        });
+        filterButtons.set(group.key, button);
+        filters.appendChild(button);
     });
+
+    loadMore.addEventListener('click', () => {
+        visibleCount += GALLERY_PAGE_SIZE;
+        paintGallery();
+    });
+
+    toolbar.append(filters, status);
+    gallery.append(toolbar, heading, grid, loadMore);
+    paintGallery();
+
+    function paintGallery() {
+        const group = groups.find((entry) => entry.key === activeKey) || groups[0];
+        const items = group.items.slice(0, visibleCount);
+
+        heading.textContent = group.label;
+        grid.replaceChildren(...items.map((item) => createMediaCard(item)));
+        status.textContent = `عرض ${items.length} من ${group.items.length} أعمال`;
+        loadMore.hidden = items.length >= group.items.length;
+
+        filterButtons.forEach((button, key) => {
+            button.setAttribute('aria-pressed', String(key === group.key));
+        });
+
+        setupLiteYoutubeEmbeds(grid);
+    }
 }
 
-function createMediaCard(item, delayIndex = 0) {
+function buildGalleryGroups() {
+    const groupedItems = new Map();
+
+    showcaseVideos.forEach((item) => {
+        const categoryKey = detectVideoCategory(item);
+        if (!groupedItems.has(categoryKey)) {
+            groupedItems.set(categoryKey, []);
+        }
+        groupedItems.get(categoryKey).push(item);
+    });
+
+    const featuredItems = FEATURED_VIDEO_IDS
+        .map((youtubeId) => showcaseVideos.find((item) => item.youtubeId === youtubeId))
+        .filter(Boolean);
+
+    const categoryOrder = [
+        'cinematic',
+        'medical',
+        'education',
+        'fashion',
+        'lawyers_creators',
+        'youtube_long',
+        FALLBACK_VIDEO_CATEGORY.key
+    ];
+
+    const groups = categoryOrder
+        .map((key) => {
+            const items = groupedItems.get(key) || [];
+            return {
+                key,
+                label: getVideoCategoryLabel(key),
+                items
+            };
+        })
+        .filter((group) => group.items.length);
+
+    if (featuredItems.length) {
+        groups.unshift({
+            key: 'featured',
+            label: 'مختاراتنا',
+            items: featuredItems
+        });
+    }
+
+    return groups;
+}
+
+function createMediaCard(item) {
     const card = document.createElement('article');
     card.className = 'media-card';
-    card.setAttribute('data-reveal', '');
-    const delay = (0.05 + delayIndex * 0.12).toFixed(2);
-    card.dataset.revealDelay = `${delay}s`;
+    if (item.category === 'youtube_long') {
+        card.classList.add('media-card--wide');
+    }
 
     const media = createMediaElement(item);
     if (media) {
@@ -597,16 +664,7 @@ function createMediaElement(item) {
             frame.classList.add('media-card__frame--wide');
         }
 
-        const iframe = document.createElement('iframe');
-        iframe.className = 'media-card__embed';
-        iframe.src = `https://www.youtube.com/embed/${item.youtubeId}?rel=0&modestbranding=1&playsinline=1`;
-        iframe.title = item.title ?? 'YouTube video';
-        iframe.loading = 'lazy';
-        iframe.allow =
-            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframe.allowFullscreen = true;
-
-        frame.appendChild(iframe);
+        frame.appendChild(createYoutubeFacade(item));
         return frame;
     }
 
@@ -628,7 +686,7 @@ function createMediaElement(item) {
     video.appendChild(source);
 
     const fallback = document.createElement('p');
-    fallback.textContent = '?????? ?? ???? ????? ???????.';
+    fallback.textContent = 'متصفحك لا يدعم تشغيل الفيديو.';
     video.appendChild(fallback);
 
     return video;
@@ -643,6 +701,71 @@ function deriveMimeType(path) {
         return 'video/ogg';
     }
     return 'video/mp4';
+}
+
+function createYoutubeFacade(item) {
+    const button = document.createElement('button');
+    button.className = 'lite-youtube';
+    button.type = 'button';
+    button.dataset.youtubeLite = '';
+    button.dataset.youtubeId = item.youtubeId;
+    button.dataset.youtubeTitle = item.title || 'فيديو من أعمال EMRF Studio';
+    button.dataset.youtubeFrameClass = 'media-card__embed';
+    button.setAttribute('aria-label', `تشغيل الفيديو: ${button.dataset.youtubeTitle}`);
+
+    const poster = document.createElement('img');
+    poster.className = 'lite-youtube__poster';
+    poster.src = `https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`;
+    poster.alt = '';
+    poster.loading = 'lazy';
+    poster.decoding = 'async';
+    poster.width = 480;
+    poster.height = 360;
+
+    const shade = document.createElement('span');
+    shade.className = 'lite-youtube__shade';
+    shade.setAttribute('aria-hidden', 'true');
+
+    const play = document.createElement('span');
+    play.className = 'lite-youtube__play';
+    play.setAttribute('aria-hidden', 'true');
+
+    const label = document.createElement('span');
+    label.className = 'lite-youtube__label';
+    label.textContent = 'تشغيل الفيديو';
+
+    button.append(poster, shade, play, label);
+    return button;
+}
+
+function setupLiteYoutubeEmbeds(root) {
+    root.querySelectorAll('[data-youtube-lite]').forEach((button) => {
+        if (button.dataset.youtubeEnhanced === 'true') {
+            return;
+        }
+
+        button.dataset.youtubeEnhanced = 'true';
+        button.addEventListener('click', () => loadYoutubeEmbed(button), { once: true });
+    });
+}
+
+function loadYoutubeEmbed(button) {
+    const videoId = button.dataset.youtubeId || '';
+    if (!/^[A-Za-z0-9_-]{6,20}$/.test(videoId)) {
+        return;
+    }
+
+    const iframe = document.createElement('iframe');
+    iframe.className = button.dataset.youtubeFrameClass || 'media-card__embed';
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    iframe.title = button.dataset.youtubeTitle || button.getAttribute('aria-label') || 'YouTube video';
+    iframe.allow =
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+
+    button.replaceWith(iframe);
+    iframe.focus();
 }
 
 function observeSections(navList) {
