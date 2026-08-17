@@ -292,9 +292,9 @@ const VIDEO_CATEGORY_RULES = [
     },
     {
         key: 'youtube_long',
-        label: 'فيديوهات يوتيوب طويله',
+        label: 'فيديوهات يوتيوب',
         showWhenEmpty: true,
-        emptyText: 'سيتم إضافة فيديوهات يوتيوب طويله هنا قريبًا.',
+        emptyText: 'سيتم إضافة فيديوهات يوتيوب هنا قريبًا.',
         matches: (text) =>
             text.includes('youtube long') ||
             text.includes('long video') ||
@@ -342,14 +342,6 @@ const FALLBACK_VIDEO_CATEGORY = {
 };
 
 const GALLERY_PAGE_SIZE = 6;
-const FEATURED_VIDEO_IDS = [
-    'v9BjJFTXLkQ',
-    'KgHGTdvQ59Q',
-    '4A7QFUq53sI',
-    's55hCdpmZSQ',
-    'SyyjKZ8laAU',
-    'M6BUnpOEaRw'
-];
 
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
@@ -584,17 +576,13 @@ function buildGalleryGroups() {
         groupedItems.get(categoryKey).push(item);
     });
 
-    const featuredItems = FEATURED_VIDEO_IDS
-        .map((youtubeId) => showcaseVideos.find((item) => item.youtubeId === youtubeId))
-        .filter(Boolean);
-
     const categoryOrder = [
-        'cinematic',
         'medical',
+        'youtube_long',
+        'cinematic',
         'education',
         'fashion',
         'lawyers_creators',
-        'youtube_long',
         FALLBACK_VIDEO_CATEGORY.key
     ];
 
@@ -608,14 +596,6 @@ function buildGalleryGroups() {
             };
         })
         .filter((group) => group.items.length);
-
-    if (featuredItems.length) {
-        groups.unshift({
-            key: 'featured',
-            label: 'مختاراتنا',
-            items: featuredItems
-        });
-    }
 
     return groups;
 }
