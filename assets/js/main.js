@@ -194,6 +194,20 @@ const showcaseVideos = [
         tags: ['fashion', 'model', 'concept']
     },
     {
+        title: 'المعتقدات',
+        description: 'فيديو يوتيوب بعنوان «المعتقدات» ضمن أعمال EMRF Studio.',
+        youtubeId: 'umf8j6UNUjk',
+        category: 'youtube_long',
+        tags: ['المعتقدات', 'youtube long', 'long video']
+    },
+    {
+        title: 'الهوية',
+        description: 'فيديو يوتيوب بعنوان «الهوية» ضمن أعمال EMRF Studio.',
+        youtubeId: 'F198oqDdlk8',
+        category: 'youtube_long',
+        tags: ['الهوية', 'youtube long', 'long video']
+    },
+    {
         title: 'macdonald',
         description: 'فيديو يوتيوب طويل ضمن أعمال المعرض.',
         youtubeId: '9lQhpGcrDVA',
