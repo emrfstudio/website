@@ -2107,6 +2107,10 @@ ol {
 }
 
 .home-page .hero__stage {
+    --hero-tilt-x: 0deg;
+    --hero-tilt-y: 0deg;
+    --hero-shine-x: 50%;
+    --hero-shine-y: 50%;
     position: relative;
     top: auto;
     min-height: min(690px, calc(100svh - var(--header-height) - 70px));
@@ -2121,6 +2125,39 @@ ol {
         radial-gradient(circle at 92% 88%, rgba(225, 160, 103, 0.16), transparent 36%),
         linear-gradient(125deg, rgba(8, 9, 17, 0.91), rgba(22, 13, 32, 0.72) 52%, rgba(8, 17, 27, 0.78));
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.36);
+    overflow: visible;
+    transform: perspective(1400px) rotateX(var(--hero-tilt-x)) rotateY(var(--hero-tilt-y));
+    transform-style: preserve-3d;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease;
+}
+
+.home-page .hero__stage.is-tilting {
+    box-shadow:
+        0 38px 100px rgba(0, 0, 0, 0.45),
+        0 0 70px rgba(112, 73, 190, 0.11);
+    transition-duration: 0.08s;
+    will-change: transform;
+}
+
+.home-page .hero__stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    background: radial-gradient(
+        circle 360px at var(--hero-shine-x) var(--hero-shine-y),
+        rgba(255, 223, 183, 0.15),
+        rgba(126, 82, 199, 0.08) 38%,
+        transparent 72%
+    );
+    pointer-events: none;
+    opacity: 0.72;
+    transition: opacity 0.25s ease;
+}
+
+.home-page .hero__stage.is-tilting::after {
+    opacity: 1;
 }
 
 .home-page .hero__copy {
@@ -2135,6 +2172,8 @@ ol {
     backdrop-filter: none;
     box-shadow: none;
     overflow: visible;
+    transform: translateZ(24px);
+    transition: transform 0.3s ease;
 }
 
 .home-page .hero__eyebrow {
@@ -2247,6 +2286,16 @@ ol {
     background: #090a0f;
     box-shadow: 0 22px 54px rgba(0, 0, 0, 0.34);
     overflow: hidden;
+    transform: translateZ(54px) rotateY(-1.5deg);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.home-page .hero__stage:hover .hero__visual,
+.home-page .hero__stage:focus-within .hero__visual {
+    transform: translateZ(66px) rotateY(-0.5deg) translateY(-4px);
+    box-shadow:
+        0 30px 68px rgba(0, 0, 0, 0.44),
+        0 0 42px rgba(217, 185, 143, 0.12);
 }
 
 .home-page .hero__video-frame {
@@ -2693,6 +2742,9 @@ ol {
         flex-direction: column;
         align-items: stretch;
         padding: clamp(30px, 6vw, 48px);
+        overflow: hidden;
+        transform: none;
+        transform-style: flat;
     }
 
     .home-page .hero__copy,
@@ -2700,6 +2752,12 @@ ol {
         flex: none;
         width: 100%;
         max-width: none;
+        transform: none;
+    }
+
+    .home-page .hero__stage:hover .hero__visual,
+    .home-page .hero__stage:focus-within .hero__visual {
+        transform: none;
     }
 
     .home-page .hero__visual {

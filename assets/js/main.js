@@ -346,9 +346,62 @@ const GALLERY_PAGE_SIZE = 6;
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     setCurrentYear();
+    setupHeroTilt();
     setupLiteYoutubeEmbeds(document);
     renderVideoGallery();
 });
+
+function setupHeroTilt() {
+    const stage = document.querySelector('.hero__stage');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+
+    if (!stage || reduceMotion || coarsePointer) {
+        return;
+    }
+
+    let frameId = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    const renderTilt = () => {
+        const bounds = stage.getBoundingClientRect();
+        const x = Math.min(Math.max((pointerX - bounds.left) / bounds.width, 0), 1);
+        const y = Math.min(Math.max((pointerY - bounds.top) / bounds.height, 0), 1);
+        const tiltX = (0.5 - y) * 5.5;
+        const tiltY = (x - 0.5) * 5.5;
+
+        stage.style.setProperty('--hero-tilt-x', `${tiltX.toFixed(2)}deg`);
+        stage.style.setProperty('--hero-tilt-y', `${tiltY.toFixed(2)}deg`);
+        stage.style.setProperty('--hero-shine-x', `${(x * 100).toFixed(1)}%`);
+        stage.style.setProperty('--hero-shine-y', `${(y * 100).toFixed(1)}%`);
+        frameId = 0;
+    };
+
+    stage.addEventListener('pointerenter', () => {
+        stage.classList.add('is-tilting');
+    });
+
+    stage.addEventListener('pointermove', (event) => {
+        pointerX = event.clientX;
+        pointerY = event.clientY;
+        if (!frameId) {
+            frameId = window.requestAnimationFrame(renderTilt);
+        }
+    });
+
+    stage.addEventListener('pointerleave', () => {
+        if (frameId) {
+            window.cancelAnimationFrame(frameId);
+            frameId = 0;
+        }
+        stage.classList.remove('is-tilting');
+        stage.style.removeProperty('--hero-tilt-x');
+        stage.style.removeProperty('--hero-tilt-y');
+        stage.style.removeProperty('--hero-shine-x');
+        stage.style.removeProperty('--hero-shine-y');
+    });
+}
 
 function setupNavigation() {
     const navToggle = document.querySelector('.nav-toggle');
