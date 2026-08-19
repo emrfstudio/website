@@ -360,10 +360,63 @@ const GALLERY_PAGE_SIZE = 6;
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     setCurrentYear();
+    setupSiteAudio();
     setupHeroTilt();
     setupLiteYoutubeEmbeds(document);
     renderVideoGallery();
 });
+
+function setupSiteAudio() {
+    const audio = document.querySelector('[data-site-audio]');
+    const toggle = document.querySelector('[data-music-toggle]');
+    const label = toggle?.querySelector('[data-music-label]');
+
+    if (!audio || !toggle || !label) {
+        return;
+    }
+
+    audio.volume = 0.28;
+
+    const updateState = (isPlaying) => {
+        const text = isPlaying ? 'إيقاف الموسيقى' : 'تشغيل الموسيقى';
+        toggle.classList.toggle('is-playing', isPlaying);
+        toggle.setAttribute('aria-pressed', String(isPlaying));
+        toggle.setAttribute('aria-label', text);
+        toggle.title = text;
+        label.textContent = text;
+    };
+
+    toggle.addEventListener('click', async () => {
+        if (!audio.paused) {
+            audio.pause();
+            return;
+        }
+
+        toggle.classList.add('is-loading');
+        label.textContent = 'جارٍ التشغيل…';
+        toggle.disabled = true;
+
+        try {
+            await audio.play();
+        } catch (error) {
+            updateState(false);
+        } finally {
+            toggle.disabled = false;
+            toggle.classList.remove('is-loading');
+        }
+    });
+
+    audio.addEventListener('play', () => updateState(true));
+    audio.addEventListener('pause', () => updateState(false));
+    audio.addEventListener('error', () => {
+        toggle.classList.remove('is-loading');
+        toggle.disabled = false;
+        label.textContent = 'تعذر تشغيل الموسيقى';
+        toggle.setAttribute('aria-label', 'تعذر تشغيل الموسيقى');
+    });
+
+    updateState(false);
+}
 
 function setupHeroTilt() {
     const stage = document.querySelector('.hero__stage');

@@ -47,6 +47,26 @@
         </div>
     </header>
 
+    <button
+        class="music-toggle"
+        type="button"
+        data-music-toggle
+        aria-controls="site-music"
+        aria-pressed="false"
+        aria-label="تشغيل الموسيقى"
+    >
+        <span class="music-toggle__visual" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <span class="music-toggle__label" data-music-label>تشغيل الموسيقى</span>
+    </button>
+    <audio id="site-music" data-site-audio preload="none" loop>
+        <source src="assets/audio/sirens.mp3" type="audio/mpeg">
+    </audio>
+
     <main id="main-content">
         <section id="hero" class="hero" aria-labelledby="hero-title">
             <div class="container hero__stage glass-panel">

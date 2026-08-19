@@ -1988,6 +1988,84 @@ ol {
     transform: translateY(0);
 }
 
+.home-page .music-toggle {
+    position: fixed;
+    inset-inline-end: 20px;
+    inset-block-end: 20px;
+    z-index: 45;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-height: 46px;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background: rgba(3, 3, 5, 0.94);
+    color: var(--text-200);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+}
+
+.home-page .music-toggle:hover,
+.home-page .music-toggle:focus-visible,
+.home-page .music-toggle.is-playing {
+    border-color: rgba(241, 210, 170, 0.46);
+    background: rgba(10, 10, 12, 0.97);
+    color: var(--text-100);
+    transform: translateY(-2px);
+}
+
+.home-page .music-toggle:disabled {
+    cursor: wait;
+    opacity: 0.72;
+}
+
+.home-page .music-toggle__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: 22px;
+    height: 18px;
+}
+
+.home-page .music-toggle__visual span {
+    width: 2px;
+    height: 5px;
+    border-radius: 999px;
+    background: currentColor;
+    transform-origin: center;
+}
+
+.home-page .music-toggle.is-playing .music-toggle__visual span {
+    animation: music-level 0.75s ease-in-out infinite alternate;
+}
+
+.home-page .music-toggle.is-playing .music-toggle__visual span:nth-child(2) {
+    animation-delay: -0.42s;
+}
+
+.home-page .music-toggle.is-playing .music-toggle__visual span:nth-child(3) {
+    animation-delay: -0.2s;
+}
+
+.home-page .music-toggle.is-playing .music-toggle__visual span:nth-child(4) {
+    animation-delay: -0.56s;
+}
+
+@keyframes music-level {
+    from {
+        transform: scaleY(0.7);
+    }
+    to {
+        transform: scaleY(3);
+    }
+}
+
 .home-page :where(a, button):focus-visible {
     outline: 3px solid rgba(241, 210, 170, 0.72);
     outline-offset: 3px;
@@ -2806,6 +2884,28 @@ ol {
         letter-spacing: 0.2em;
     }
 
+    .home-page .music-toggle {
+        inset-inline-end: 14px;
+        inset-block-end: 14px;
+        width: 46px;
+        min-height: 46px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .home-page .music-toggle__label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
     .home-page .nav-toggle {
         min-height: 38px;
         padding: 0.45rem 0.75rem;
@@ -2976,5 +3076,9 @@ ol {
     .home-page .lite-youtube__play,
     .home-page :where(.card, .service-card, .media-card, .btn) {
         transition: none;
+    }
+
+    .home-page .music-toggle__visual span {
+        animation: none !important;
     }
 }
