@@ -1580,6 +1580,7 @@ ol {
 .section--services,
 .section--industries,
 .section--workflow,
+.section--testimonials,
 .section--compliance,
 .section--contact {
     background: transparent;
@@ -2471,7 +2472,6 @@ ol {
 .home-page .media-card,
 .home-page .values-list li,
 .home-page .industry-tags__item,
-.home-page .workflow-list li,
 .home-page .contact-card {
     border: 1px solid rgba(255, 255, 255, 0.09);
     background: rgba(255, 255, 255, 0.035);
@@ -2548,29 +2548,90 @@ ol {
     box-shadow: none;
 }
 
-.home-page .workflow-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+.home-page .testimonials-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(20px, 3vw, 38px);
+    min-height: 230px;
+    padding: clamp(28px, 4vw, 48px);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 12% 20%, rgba(217, 185, 143, 0.1), transparent 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
 }
 
-.home-page .workflow-list li {
+.home-page .testimonials-panel::after {
+    content: '';
+    position: absolute;
+    inset: auto -10% -70% 42%;
+    height: 190px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.035);
+    filter: blur(44px);
+    pointer-events: none;
+}
+
+.home-page .testimonials-panel__quote {
+    align-self: start;
+    color: rgba(241, 210, 170, 0.72);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(5.5rem, 9vw, 8.5rem);
+    line-height: 0.72;
+    transform: translateY(0.25rem);
+}
+
+.home-page .testimonials-panel__content {
+    position: relative;
+    z-index: 1;
     min-width: 0;
-    padding: 1.25rem;
-    border-radius: 14px;
-    transition: border-color 0.18s ease, transform 0.18s ease;
 }
 
-.home-page .workflow-list li:hover,
-.home-page .workflow-list li:focus-within {
-    transform: translateY(-3px);
-    border-color: rgba(217, 185, 143, 0.38);
-}
-
-.home-page .workflow-list__step {
-    padding: 0.25rem 0.6rem;
-    background: rgba(217, 185, 143, 0.1);
-    border-color: rgba(217, 185, 143, 0.28);
+.home-page .testimonials-panel__eyebrow {
+    margin: 0 0 0.35rem;
+    color: var(--accent-strong);
     font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.home-page .testimonials-panel h3 {
+    margin: 0 0 0.65rem;
+    color: var(--text-100);
+    font-size: clamp(1.35rem, 2.3vw, 2rem);
+}
+
+.home-page .testimonials-panel__content > p:last-of-type {
+    max-width: 670px;
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.home-page .testimonials-panel__topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 1.15rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.home-page .testimonials-panel__topics li {
+    padding: 0.38rem 0.7rem;
+    border: 1px solid rgba(217, 185, 143, 0.2);
+    border-radius: 999px;
+    background: rgba(217, 185, 143, 0.065);
+    color: rgba(245, 245, 250, 0.78);
+    font-size: 0.76rem;
+}
+
+.home-page .testimonials-panel__action {
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
 }
 
 .home-page .media-gallery {
@@ -3019,9 +3080,32 @@ ol {
     .home-page .grid--triple,
     .home-page .grid--services,
     .home-page .values-list,
-    .home-page .industry-tags,
-    .home-page .workflow-list {
+    .home-page .industry-tags {
         grid-template-columns: 1fr;
+    }
+
+    .home-page .testimonials-panel {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        min-height: 0;
+        padding: 24px 20px;
+    }
+
+    .home-page .testimonials-panel__quote {
+        position: absolute;
+        inset-block-start: 22px;
+        inset-inline-end: 20px;
+        font-size: 5.5rem;
+        opacity: 0.45;
+    }
+
+    .home-page .testimonials-panel__content {
+        padding-block-start: 30px;
+    }
+
+    .home-page .testimonials-panel__action {
+        width: 100%;
+        justify-content: center;
     }
 
     .home-page .card,
