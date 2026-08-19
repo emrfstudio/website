@@ -762,12 +762,21 @@ function createYoutubeFacade(item) {
 
     const poster = document.createElement('img');
     poster.className = 'lite-youtube__poster';
-    poster.src = `https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`;
+    const highResolutionPoster = `https://i.ytimg.com/vi_webp/${item.youtubeId}/maxresdefault.webp`;
+    const fallbackPoster = `https://i.ytimg.com/vi/${item.youtubeId}/hqdefault.jpg`;
+    poster.addEventListener(
+        'error',
+        () => {
+            poster.src = fallbackPoster;
+        },
+        { once: true }
+    );
+    poster.src = highResolutionPoster;
     poster.alt = '';
     poster.loading = 'lazy';
     poster.decoding = 'async';
-    poster.width = 480;
-    poster.height = 360;
+    poster.width = 1280;
+    poster.height = 720;
 
     const shade = document.createElement('span');
     shade.className = 'lite-youtube__shade';
@@ -791,6 +800,19 @@ function setupLiteYoutubeEmbeds(root) {
             return;
         }
 
+        const poster = button.querySelector('.lite-youtube__poster[data-fallback-src]');
+        if (poster) {
+            const useFallbackPoster = () => {
+                if (poster.src !== poster.dataset.fallbackSrc) {
+                    poster.src = poster.dataset.fallbackSrc;
+                }
+            };
+            poster.addEventListener('error', useFallbackPoster, { once: true });
+            if (poster.complete && poster.naturalWidth === 0) {
+                useFallbackPoster();
+            }
+        }
+
         button.dataset.youtubeEnhanced = 'true';
         button.addEventListener('click', () => loadYoutubeEmbed(button), { once: true });
     });
@@ -804,7 +826,7 @@ function loadYoutubeEmbed(button) {
 
     const iframe = document.createElement('iframe');
     iframe.className = button.dataset.youtubeFrameClass || 'media-card__embed';
-    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&vq=hd1080`;
     iframe.title = button.dataset.youtubeTitle || button.getAttribute('aria-label') || 'YouTube video';
     iframe.allow =
         'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
