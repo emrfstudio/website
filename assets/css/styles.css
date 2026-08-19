@@ -1943,10 +1943,10 @@ ol {
 }
 
 .home-page::before {
-    position: absolute;
-    inset: 0 0 auto;
-    width: 100%;
-    height: max(760px, 100svh);
+    position: fixed;
+    inset: 0;
+    width: auto;
+    height: 100svh;
     background: var(--background-image) center top / cover no-repeat;
     filter: none;
     transform: none;
@@ -1955,17 +1955,17 @@ ol {
 }
 
 .home-page::after {
-    position: absolute;
-    inset: 0 0 auto;
-    width: 100%;
-    height: max(760px, 100svh);
+    position: fixed;
+    inset: 0;
+    width: auto;
+    height: 100svh;
     background:
         radial-gradient(ellipse 72% 38% at 50% -8%, rgba(255, 255, 255, 0.075), transparent 68%),
         radial-gradient(ellipse 42% 68% at -8% 42%, rgba(255, 255, 255, 0.04), transparent 72%),
         radial-gradient(ellipse 38% 62% at 108% 58%, rgba(255, 255, 255, 0.032), transparent 74%),
         radial-gradient(ellipse 48% 34% at 54% 76%, rgba(0, 0, 0, 0.72), transparent 76%),
         linear-gradient(112deg, rgba(1, 1, 2, 0.9) 0%, rgba(7, 7, 9, 0.52) 48%, rgba(1, 1, 2, 0.92) 100%),
-        linear-gradient(180deg, rgba(1, 1, 2, 0.18) 0%, rgba(1, 1, 2, 0.42) 58%, #020203 100%);
+        linear-gradient(180deg, rgba(1, 1, 2, 0.18) 0%, rgba(1, 1, 2, 0.42) 58%, rgba(2, 2, 3, 0.86) 100%);
     mix-blend-mode: normal;
     filter: none;
 }
@@ -2117,12 +2117,27 @@ ol {
 
 .home-page .site-logo {
     flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
     direction: ltr;
     white-space: nowrap;
     font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
     font-size: 0.94rem;
     font-weight: 700;
     letter-spacing: 0.28em;
+}
+
+.home-page .site-logo__mark {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.55));
+}
+
+.home-page .site-logo__text {
+    display: inline-block;
 }
 
 .home-page .site-nav ul {
@@ -2862,11 +2877,6 @@ ol {
         font-size: 0.96rem;
     }
 
-    .home-page::before,
-    .home-page::after {
-        height: 760px;
-    }
-
     .home-page::before {
         background-position: 47% top;
     }
@@ -2880,8 +2890,15 @@ ol {
     }
 
     .home-page .site-logo {
+        gap: 0.45rem;
         font-size: 0.82rem;
         letter-spacing: 0.2em;
+    }
+
+    .home-page .site-logo__mark {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
     }
 
     .home-page .music-toggle {
