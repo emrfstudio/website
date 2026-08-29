@@ -2773,6 +2773,7 @@ ol {
 }
 
 .home-page .media-card {
+    padding: 0;
     min-width: 0;
     border-radius: 14px;
     overflow: hidden;
@@ -3259,6 +3260,62 @@ ol {
     .home-page .contact-card__actions .btn {
         width: 100%;
         justify-content: center;
+    }
+}
+
+@media (max-width: 520px) {
+    .home-page .media-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .home-page .media-card {
+        width: min(100%, 340px);
+        margin-inline: auto;
+        border-radius: 16px;
+    }
+
+    .home-page .media-card--wide {
+        width: 100%;
+        grid-column: auto;
+    }
+
+    .home-page .media-card__meta {
+        padding: 1rem 1.05rem 1.1rem;
+    }
+
+    .home-page .media-card__title {
+        margin-bottom: 0.4rem;
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    .home-page .media-card__desc {
+        display: -webkit-box;
+        overflow: hidden;
+        font-size: 0.8rem;
+        line-height: 1.7;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .home-page .lite-youtube__play {
+        width: 64px;
+        height: 64px;
+        border-color: rgba(241, 210, 170, 0.62);
+        background: rgba(8, 9, 14, 0.88);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
+    }
+
+    .home-page .lite-youtube__play::after {
+        border-block-width: 9px;
+        border-left-width: 15px;
+    }
+
+    .home-page .lite-youtube__label {
+        inset-inline: 16px;
+        inset-block-end: 14px;
+        font-size: 0.9rem;
     }
 }
 
