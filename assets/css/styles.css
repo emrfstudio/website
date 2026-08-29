@@ -3263,7 +3263,7 @@ ol {
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 768px) {
     .home-page .media-grid {
         grid-template-columns: minmax(0, 1fr);
         gap: 18px;
