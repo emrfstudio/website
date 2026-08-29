@@ -3270,13 +3270,13 @@ ol {
     }
 
     .home-page .media-card {
-        width: min(100%, 340px);
+        width: min(94%, 310px);
         margin-inline: auto;
         border-radius: 16px;
     }
 
     .home-page .media-card--wide {
-        width: 100%;
+        width: min(94%, 310px);
         grid-column: auto;
     }
 
