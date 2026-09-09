@@ -107,6 +107,13 @@ const showcaseVideos = [
         tags: ['lawyer', 'legal', 'rumors', 'awareness', 'shorts']
     },
     {
+        title: 'دكتور بيتكلم عن السونار الطبي',
+        description: 'فيديو طبي قصير يشرح فيه الدكتور السونار الطبي بطريقة واضحة ومبسطة.',
+        youtubeId: 'AvXZp8W4pLI',
+        category: 'medical',
+        tags: ['medical', 'doctor', 'ultrasound', 'sonar', 'shorts']
+    },
+    {
         title: 'ريل تبييض الأسنان',
         description: 'جزء بسيط من فيديو لدكتور بيتكلم عن تبييض الأسنان .',
         youtubeId: 'LL5_I8knbtU',
