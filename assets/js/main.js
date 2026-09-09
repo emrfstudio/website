@@ -30,6 +30,13 @@ const showcaseVideos = [
         tags: ['teacher', 'education', 'reel']
     },
     {
+        title: 'فيديو تعليمي لمدرس',
+        description: 'فيديو قصير لمدرس ضمن أعمال المحتوى التعليمي.',
+        youtubeId: 'sd38mKZ1rzQ',
+        category: 'education',
+        tags: ['teacher', 'education', 'shorts']
+    },
+    {
         title: 'فيديو انيميشن',
         description: 'فيديو انيميشن من صُنعى بالكامل يظهر استمرارية الشخصيات وكل أساليب وستايلات الجرافيك.',
         youtubeId: 'KgHGTdvQ59Q',
@@ -107,11 +114,18 @@ const showcaseVideos = [
         tags: ['lawyer', 'legal', 'rumors', 'awareness', 'shorts']
     },
     {
-        title: 'دكتور بيتكلم عن السونار الطبي',
-        description: 'فيديو طبي قصير يشرح فيه الدكتور السونار الطبي بطريقة واضحة ومبسطة.',
+        title: 'دكتور بيتكلم عن حساسية القمح واللاكتوز',
+        description: 'فيديو طبي قصير يشرح فيه الدكتور حساسية القمح واللاكتوز بطريقة واضحة ومبسطة.',
         youtubeId: 'AvXZp8W4pLI',
         category: 'medical',
-        tags: ['medical', 'doctor', 'ultrasound', 'sonar', 'shorts']
+        tags: ['medical', 'doctor', 'gluten allergy', 'lactose intolerance', 'shorts']
+    },
+    {
+        title: 'دكتور بيتكلم عن سونار الأمعاء',
+        description: 'فيديو طبي قصير يشرح فيه الدكتور سونار الأمعاء بطريقة واضحة ومبسطة.',
+        youtubeId: '-rubt-Xt_aM',
+        category: 'medical',
+        tags: ['medical', 'doctor', 'bowel ultrasound', 'sonar', 'shorts']
     },
     {
         title: 'ريل تبييض الأسنان',
