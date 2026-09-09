@@ -114,18 +114,18 @@ const showcaseVideos = [
         tags: ['lawyer', 'legal', 'rumors', 'awareness', 'shorts']
     },
     {
-        title: 'دكتور بيتكلم عن حساسية القمح واللاكتوز',
-        description: 'فيديو طبي قصير يشرح فيه الدكتور حساسية القمح واللاكتوز بطريقة واضحة ومبسطة.',
-        youtubeId: 'AvXZp8W4pLI',
-        category: 'medical',
-        tags: ['medical', 'doctor', 'gluten allergy', 'lactose intolerance', 'shorts']
-    },
-    {
         title: 'دكتور بيتكلم عن سونار الأمعاء',
         description: 'فيديو طبي قصير يشرح فيه الدكتور سونار الأمعاء بطريقة واضحة ومبسطة.',
         youtubeId: '-rubt-Xt_aM',
         category: 'medical',
         tags: ['medical', 'doctor', 'bowel ultrasound', 'sonar', 'shorts']
+    },
+    {
+        title: 'دكتور بيتكلم عن حساسية القمح واللاكتوز',
+        description: 'فيديو طبي قصير يشرح فيه الدكتور حساسية القمح واللاكتوز بطريقة واضحة ومبسطة.',
+        youtubeId: 'AvXZp8W4pLI',
+        category: 'medical',
+        tags: ['medical', 'doctor', 'gluten allergy', 'lactose intolerance', 'shorts']
     },
     {
         title: 'ريل تبييض الأسنان',
