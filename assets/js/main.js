@@ -142,6 +142,13 @@ const showcaseVideos = [
         tags: ['medical', 'cosmetic', 'hand rejuvenation', 'injection', 'shorts']
     },
     {
+        title: 'دكتورة بتتكلم عن التمرين بانتظام والإجهاد',
+        description: 'فيديو طبي قصير توضح فيه الدكتورة العلاقة بين ممارسة التمارين بانتظام والإجهاد.',
+        youtubeId: 'tbHAA0ehIQE',
+        category: 'medical',
+        tags: ['medical', 'doctor', 'exercise', 'stress', 'shorts']
+    },
+    {
         title: 'دكتور بيتكلم عن سونار الأمعاء',
         description: 'فيديو طبي قصير يشرح فيه الدكتور سونار الأمعاء بطريقة واضحة ومبسطة.',
         youtubeId: '-rubt-Xt_aM',
