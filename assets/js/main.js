@@ -229,20 +229,6 @@ const showcaseVideos = [
         youtubeId: 'ZHq2M-SLg_I'
     },
     {
-        title: 'Model Speedramp - Fashion Reel AI',
-        description: 'ريلز موضة سريع يبرز تفاصيل الستايل والحركة للقطاع التجارى فى الملابس.',
-        youtubeId: 'SyyjKZ8laAU',
-        category: 'fashion',
-        tags: ['fashion', 'model', 'speedramp']
-    },
-    {
-        title: 'Adel Emam Model - Fashion Concept',
-        description: 'تصميم فيديو قصير يقدم موديل مستوحى من شخصية كلاسيكية بلمسة موضة حديثة.',
-        youtubeId: 'BQdqcOITg8Q',
-        category: 'fashion',
-        tags: ['fashion', 'model', 'concept']
-    },
-    {
         title: 'المعتقدات',
         description: 'فيديو يوتيوب بعنوان «المعتقدات» ضمن أعمال EMRF Studio.',
         youtubeId: 'umf8j6UNUjk',
@@ -324,19 +310,6 @@ const VIDEO_CATEGORY_RULES = [
             text.includes('أسنان')
     },
     {
-        key: 'fashion',
-        label: 'قطاع الموضة والملابس',
-        matches: (text) =>
-            text.includes('fashion') ||
-            text.includes('ملابس') ||
-            text.includes('موضة') ||
-            text.includes('أزياء') ||
-            text.includes('ازياء') ||
-            text.includes('ستايل') ||
-            text.includes('style') ||
-            text.includes('outfit')
-    },
-    {
         key: 'cinematic',
         label: 'قطاع الأفلام والإعلانات السينمائية',
         matches: (text) =>
@@ -383,7 +356,7 @@ const VIDEO_CATEGORY_RULES = [
     },
     {
         key: 'lawyers_creators',
-        label: 'المحامين وصناع المحتوى',
+        label: 'المحامين',
         matches: (text) =>
             text.includes('lawyer') ||
             text.includes('legal') ||
@@ -750,7 +723,6 @@ function buildGalleryGroups() {
         'youtube_long',
         'cinematic',
         'education',
-        'fashion',
         'lawyers_creators',
         FALLBACK_VIDEO_CATEGORY.key
     ];
