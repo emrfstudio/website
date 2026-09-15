@@ -16,6 +16,20 @@ const showcaseVideos = [
         tags: ['restaurant', 'food', 'ad', 'cinematic', 'shorts']
     },
     {
+        title: 'إعلان شقة - طريقة مختلفة وذكية',
+        description: 'إعلان قصير لشقة بأسلوب مختلف وذكي يبرز التفاصيل المهمة بشكل جذاب.',
+        youtubeId: '3icWqJhZhPU',
+        category: 'cinematic',
+        tags: ['real estate', 'apartment', 'ad', 'smart', 'shorts']
+    },
+    {
+        title: 'إيديت فارس الحصان',
+        description: 'فيديو إيديت قصير لشخص راكب حصان بستايل سينمائي وحركة سريعة.',
+        youtubeId: 'F7MNLdl6mhk',
+        category: 'cinematic',
+        tags: ['horse', 'ride', 'cinematic', 'edit']
+    },
+    {
         title: 'فيديو مدرس',
         description: 'فيديو قصير لمدرس يشرح بطريقة بسيطة وحضور واضح.',
         youtubeId: 's55hCdpmZSQ',
@@ -65,13 +79,6 @@ const showcaseVideos = [
         tags: ['real estate', 'apartments', 'ad', 'promo']
     },
     {
-        title: 'إعلان شقة - طريقة مختلفة وذكية',
-        description: 'إعلان قصير لشقة بأسلوب مختلف وذكي يبرز التفاصيل المهمة بشكل جذاب.',
-        youtubeId: '3icWqJhZhPU',
-        category: 'cinematic',
-        tags: ['real estate', 'apartment', 'ad', 'smart', 'shorts']
-    },
-    {
         title: 'إعلان قطعة أرض صحراوية',
         description: 'إعلان قصير لقطعة أرض صحراوية يبرز المساحة والموقع وخيارات الاستثمار.',
         youtubeId: 'UuolXgxDlfQ',
@@ -91,13 +98,6 @@ const showcaseVideos = [
         youtubeId: '9NJDEZxmWng',
         category: 'cinematic',
         tags: ['bowling', 'trailer', 'mobile', 'ad']
-    },
-    {
-        title: 'إيديت فارس الحصان',
-        description: 'فيديو إيديت قصير لشخص راكب حصان بستايل سينمائي وحركة سريعة.',
-        youtubeId: 'F7MNLdl6mhk',
-        category: 'cinematic',
-        tags: ['horse', 'ride', 'cinematic', 'edit']
     },
     {
         title: 'فيديو تعريفي لشباب شركة SEA',
