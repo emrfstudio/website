@@ -727,11 +727,11 @@ function buildGalleryGroups() {
 
     const categoryOrder = [
         'medical',
-        'youtube_long',
         'cinematic',
-        'education',
+        'youtube_long',
         'lawyers_creators',
-        FALLBACK_VIDEO_CATEGORY.key
+        FALLBACK_VIDEO_CATEGORY.key,
+        'education'
     ];
 
     const groups = categoryOrder
