@@ -114,6 +114,34 @@ const showcaseVideos = [
         tags: ['lawyer', 'legal', 'rumors', 'awareness', 'shorts']
     },
     {
+        title: 'محامي بيتكلم عن الابتزاز الإلكتروني',
+        description: 'فيديو قصير لمحامي يشرح الابتزاز الإلكتروني والتعامل القانوني معه بطريقة واضحة.',
+        youtubeId: 'z5AaQEoOuWQ',
+        category: 'lawyers_creators',
+        tags: ['lawyer', 'legal', 'cyber extortion', 'awareness', 'shorts']
+    },
+    {
+        title: 'محامي بيتكلم عن لو أنت متهم تعمل إيه',
+        description: 'فيديو قصير يوضح فيه المحامي الخطوات التي يجب اتباعها لو أنت متهم في قضية.',
+        youtubeId: 'EQafzaFK_6o',
+        category: 'lawyers_creators',
+        tags: ['lawyer', 'legal', 'accused', 'legal advice', 'shorts']
+    },
+    {
+        title: 'محامي بيتكلم عن السرقة',
+        description: 'فيديو قصير يشرح فيه المحامي موضوع السرقة من الناحية القانونية بطريقة واضحة.',
+        youtubeId: 'KO_jBUdIyCk',
+        category: 'lawyers_creators',
+        tags: ['lawyer', 'legal', 'theft', 'awareness', 'shorts']
+    },
+    {
+        title: 'جلسة تجديد شباب اليدين',
+        description: 'فيديو لجلسة حقن تجميلية تهدف إلى تحسين مظهر تجاعيد اليدين واستعادة نضارتهما.',
+        youtubeId: 'w8CKOJLUrPM',
+        category: 'medical',
+        tags: ['medical', 'cosmetic', 'hand rejuvenation', 'injection', 'shorts']
+    },
+    {
         title: 'دكتور بيتكلم عن سونار الأمعاء',
         description: 'فيديو طبي قصير يشرح فيه الدكتور سونار الأمعاء بطريقة واضحة ومبسطة.',
         youtubeId: '-rubt-Xt_aM',
