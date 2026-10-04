@@ -23,6 +23,13 @@ const showcaseVideos = [
         tags: ['ai', 'saudi national day', 'اليوم الوطني السعودي', 'ذكاء اصطناعي']
     },
     {
+        title: 'د. بشار - اليوم الوطني السعودي',
+        description: 'فيديو احتفالي للدكتور بشار بمناسبة اليوم الوطني السعودي.',
+        driveId: '1q_eneHitmlWpzv48--CnpRLT_EQn8J-t',
+        category: 'saudi_national_day',
+        tags: ['دكتور بشار', 'saudi national day', 'اليوم الوطني السعودي', 'احتفال']
+    },
+    {
         title: 'إعلان مطعم - ستايل كرييتف',
         description: 'إعلان مطعم سريع وممتع بإيقاع بصري يجذب الانتباه ويبرز تجربة الأكل.',
         youtubeId: 'v9BjJFTXLkQ',
