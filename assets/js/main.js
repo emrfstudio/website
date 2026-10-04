@@ -16,6 +16,13 @@ const showcaseVideos = [
         tags: ['derma art', 'saudi national day', 'اليوم الوطني السعودي', 'احتفال']
     },
     {
+        title: 'اليوم الوطني السعودي - AI',
+        description: 'فيديو احتفالي بمناسبة اليوم الوطني السعودي بتقنيات الذكاء الاصطناعي.',
+        driveId: '1nWdi-4004juI5YtSK5kUtbC5cyNr2l_p',
+        category: 'saudi_national_day',
+        tags: ['ai', 'saudi national day', 'اليوم الوطني السعودي', 'ذكاء اصطناعي']
+    },
+    {
         title: 'إعلان مطعم - ستايل كرييتف',
         description: 'إعلان مطعم سريع وممتع بإيقاع بصري يجذب الانتباه ويبرز تجربة الأكل.',
         youtubeId: 'v9BjJFTXLkQ',
