@@ -2,6 +2,13 @@
 
 const showcaseVideos = [
     {
+        title: 'فيديو اليوم الوطني السعودي',
+        description: 'فيديو احتفالي بمناسبة اليوم الوطني السعودي.',
+        driveId: '1jli9T54fg04zkZDR91Jrz71v2-LCVE5I',
+        category: 'saudi_national_day',
+        tags: ['saudi national day', 'اليوم الوطني السعودي', 'احتفال']
+    },
+    {
         title: 'إعلان مطعم - ستايل كرييتف',
         description: 'إعلان مطعم سريع وممتع بإيقاع بصري يجذب الانتباه ويبرز تجربة الأكل.',
         youtubeId: 'v9BjJFTXLkQ',
@@ -409,6 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupSiteAudio();
     setupHeroTilt();
     setupLiteYoutubeEmbeds(document);
+    setupLiteDriveEmbeds(document);
     renderVideoGallery();
 });
 
@@ -736,6 +744,7 @@ function renderVideoGallery() {
         });
 
         setupLiteYoutubeEmbeds(grid);
+        setupLiteDriveEmbeds(grid);
     }
 }
 
@@ -822,6 +831,13 @@ function createMediaElement(item) {
         }
 
         frame.appendChild(createYoutubeFacade(item));
+        return frame;
+    }
+
+    if (item.driveId) {
+        const frame = document.createElement('div');
+        frame.className = 'media-card__frame';
+        frame.appendChild(createDriveFacade(item));
         return frame;
     }
 
@@ -940,6 +956,74 @@ function loadYoutubeEmbed(button) {
     iframe.title = button.dataset.youtubeTitle || button.getAttribute('aria-label') || 'YouTube video';
     iframe.allow =
         'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+
+    button.replaceWith(iframe);
+    iframe.focus();
+}
+
+function createDriveFacade(item) {
+    const button = document.createElement('button');
+    button.className = 'lite-youtube lite-drive';
+    button.type = 'button';
+    button.dataset.driveLite = '';
+    button.dataset.driveId = item.driveId;
+    button.dataset.driveTitle = item.title || 'فيديو من أعمال EMRF Studio';
+    button.setAttribute('aria-label', `تشغيل الفيديو: ${button.dataset.driveTitle}`);
+
+    const poster = document.createElement('img');
+    poster.className = 'lite-youtube__poster';
+    poster.alt = '';
+    poster.loading = 'lazy';
+    poster.decoding = 'async';
+    poster.width = 1080;
+    poster.height = 1920;
+    poster.addEventListener('error', () => poster.remove(), { once: true });
+    poster.src = `https://drive.google.com/thumbnail?id=${item.driveId}&sz=w1200`;
+
+    const shade = document.createElement('span');
+    shade.className = 'lite-youtube__shade';
+    shade.setAttribute('aria-hidden', 'true');
+
+    const context = document.createElement('span');
+    context.className = 'lite-drive__context';
+    context.textContent = 'اليوم الوطني السعودي';
+
+    const play = document.createElement('span');
+    play.className = 'lite-youtube__play';
+    play.setAttribute('aria-hidden', 'true');
+
+    const label = document.createElement('span');
+    label.className = 'lite-youtube__label';
+    label.textContent = 'تشغيل الفيديو';
+
+    button.append(poster, shade, context, play, label);
+    return button;
+}
+
+function setupLiteDriveEmbeds(root) {
+    root.querySelectorAll('[data-drive-lite]').forEach((button) => {
+        if (button.dataset.driveEnhanced === 'true') {
+            return;
+        }
+
+        button.dataset.driveEnhanced = 'true';
+        button.addEventListener('click', () => loadDriveEmbed(button), { once: true });
+    });
+}
+
+function loadDriveEmbed(button) {
+    const driveId = button.dataset.driveId || '';
+    if (!/^[A-Za-z0-9_-]{10,100}$/.test(driveId)) {
+        return;
+    }
+
+    const iframe = document.createElement('iframe');
+    iframe.className = 'media-card__embed';
+    iframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+    iframe.title = button.dataset.driveTitle || button.getAttribute('aria-label') || 'Google Drive video';
+    iframe.allow = 'autoplay; fullscreen';
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
 
