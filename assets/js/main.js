@@ -177,11 +177,11 @@ const showcaseVideos = [
         tags: ['lawyer', 'legal', 'theft', 'awareness', 'shorts']
     },
     {
-        title: 'فوائد فيتامين C',
-        description: 'فيديو طبي قصير تتحدث فيه الدكتورة عن فوائد فيتامين C وأهميته للصحة.',
+        title: 'دكتورة تتكلم عن البوتوكس',
+        description: 'فيديو طبي قصير تتحدث فيه الدكتورة عن البوتوكس بشكل مبسط.',
         youtubeId: 'StyqPotjLfs',
         category: 'medical',
-        tags: ['medical', 'doctor', 'vitamin c', 'health', 'shorts']
+        tags: ['medical', 'doctor', 'botox', 'بوتوكس', 'cosmetic', 'shorts']
     },
     {
         title: 'جلسة تجديد شباب اليدين',
