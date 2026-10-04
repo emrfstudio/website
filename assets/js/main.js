@@ -135,6 +135,13 @@ const showcaseVideos = [
         tags: ['lawyer', 'legal', 'theft', 'awareness', 'shorts']
     },
     {
+        title: 'فوائد فيتامين C',
+        description: 'فيديو طبي قصير تتحدث فيه الدكتورة عن فوائد فيتامين C وأهميته للصحة.',
+        youtubeId: 'StyqPotjLfs',
+        category: 'medical',
+        tags: ['medical', 'doctor', 'vitamin c', 'health', 'shorts']
+    },
+    {
         title: 'جلسة تجديد شباب اليدين',
         description: 'فيديو لجلسة حقن تجميلية تهدف إلى تحسين مظهر تجاعيد اليدين واستعادة نضارتهما.',
         youtubeId: 'w8CKOJLUrPM',
