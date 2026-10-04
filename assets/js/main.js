@@ -177,6 +177,13 @@ const showcaseVideos = [
         tags: ['lawyer', 'legal', 'theft', 'awareness', 'shorts']
     },
     {
+        title: 'دكتورة تتكلم عن فيتامين C',
+        description: 'فيديو طبي قصير تتحدث فيه الدكتورة عن فيتامين C بشكل مبسط.',
+        youtubeId: 'H9ihxvbz8c4',
+        category: 'medical',
+        tags: ['medical', 'doctor', 'vitamin c', 'فيتامين سي', 'health', 'shorts']
+    },
+    {
         title: 'دكتورة تتكلم عن البوتوكس',
         description: 'فيديو طبي قصير تتحدث فيه الدكتورة عن البوتوكس بشكل مبسط.',
         youtubeId: 'StyqPotjLfs',
