@@ -324,6 +324,16 @@ const VIDEO_CATEGORY_RULES = [
             text.includes('أسنان')
     },
     {
+        key: 'saudi_national_day',
+        label: 'اليوم الوطني السعودي',
+        showWhenEmpty: true,
+        emptyText: 'سيتم إضافة أعمال اليوم الوطني السعودي هنا قريبًا.',
+        matches: (text) =>
+            text.includes('saudi national day') ||
+            text.includes('اليوم الوطني السعودي') ||
+            text.includes('اليوم الوطنى السعودى')
+    },
+    {
         key: 'cinematic',
         label: 'قطاع الأفلام والإعلانات السينمائية',
         matches: (text) =>
@@ -709,8 +719,16 @@ function renderVideoGallery() {
         const items = group.items.slice(0, visibleCount);
 
         heading.textContent = group.label;
-        grid.replaceChildren(...items.map((item) => createMediaCard(item)));
-        status.textContent = `عرض ${items.length} من ${group.items.length} أعمال`;
+        if (items.length) {
+            grid.replaceChildren(...items.map((item) => createMediaCard(item)));
+            status.textContent = `عرض ${items.length} من ${group.items.length} أعمال`;
+        } else {
+            const emptyState = document.createElement('p');
+            emptyState.className = 'media-group__empty';
+            emptyState.textContent = group.emptyText || 'سيتم إضافة أعمال جديدة هنا قريبًا.';
+            grid.replaceChildren(emptyState);
+            status.textContent = 'لا توجد أعمال مضافة بعد';
+        }
         loadMore.hidden = items.length >= group.items.length;
 
         filterButtons.forEach((button, key) => {
@@ -734,6 +752,7 @@ function buildGalleryGroups() {
 
     const categoryOrder = [
         'medical',
+        'saudi_national_day',
         'cinematic',
         'youtube_long',
         'lawyers_creators',
@@ -744,13 +763,16 @@ function buildGalleryGroups() {
     const groups = categoryOrder
         .map((key) => {
             const items = groupedItems.get(key) || [];
+            const rule = VIDEO_CATEGORY_RULES.find((entry) => entry.key === key);
             return {
                 key,
                 label: getVideoCategoryLabel(key),
-                items
+                items,
+                emptyText: rule?.emptyText || '',
+                showWhenEmpty: Boolean(rule?.showWhenEmpty)
             };
         })
-        .filter((group) => group.items.length);
+        .filter((group) => group.items.length || group.showWhenEmpty);
 
     return groups;
 }
