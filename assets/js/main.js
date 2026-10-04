@@ -2,11 +2,18 @@
 
 const showcaseVideos = [
     {
-        title: 'فيديو اليوم الوطني السعودي',
-        description: 'فيديو احتفالي بمناسبة اليوم الوطني السعودي.',
+        title: 'Derma Art - تهنئة اليوم الوطني السعودي',
+        description: 'فيديو تهنئة من Derma Art بمناسبة اليوم الوطني السعودي.',
         driveId: '1jli9T54fg04zkZDR91Jrz71v2-LCVE5I',
         category: 'saudi_national_day',
-        tags: ['saudi national day', 'اليوم الوطني السعودي', 'احتفال']
+        tags: ['derma art', 'saudi national day', 'اليوم الوطني السعودي', 'تهنئة']
+    },
+    {
+        title: 'Derma Art - اليوم الوطني السعودي 2',
+        description: 'فيديو احتفالي ثانٍ من Derma Art بمناسبة اليوم الوطني السعودي.',
+        driveId: '1iuRi_Cp0l8To1jfYVDAacw48oI95vfvF',
+        category: 'saudi_national_day',
+        tags: ['derma art', 'saudi national day', 'اليوم الوطني السعودي', 'احتفال']
     },
     {
         title: 'إعلان مطعم - ستايل كرييتف',
