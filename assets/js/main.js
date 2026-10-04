@@ -30,6 +30,20 @@ const showcaseVideos = [
         tags: ['دكتور بشار', 'saudi national day', 'اليوم الوطني السعودي', 'احتفال']
     },
     {
+        title: 'بروز - تهنئة اليوم الوطني السعودي',
+        description: 'فيديو تهنئة من بروز بمناسبة اليوم الوطني السعودي.',
+        driveId: '1hhp9wBiBuzR6tt-UAxieqo2yyoBdyTDg',
+        category: 'saudi_national_day',
+        tags: ['بروز', 'saudi national day', 'اليوم الوطني السعودي', 'تهنئة']
+    },
+    {
+        title: 'بروز - تهنئة اليوم الوطني السعودي 2',
+        description: 'فيديو تهنئة ثانٍ من بروز بمناسبة اليوم الوطني السعودي.',
+        driveId: '1u54D5jemBGkPslPJl4N9Grsz58_mz-Rq',
+        category: 'saudi_national_day',
+        tags: ['بروز', 'saudi national day', 'اليوم الوطني السعودي', 'تهنئة']
+    },
+    {
         title: 'إعلان مطعم - ستايل كرييتف',
         description: 'إعلان مطعم سريع وممتع بإيقاع بصري يجذب الانتباه ويبرز تجربة الأكل.',
         youtubeId: 'v9BjJFTXLkQ',
