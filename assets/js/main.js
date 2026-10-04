@@ -198,6 +198,13 @@ const showcaseVideos = [
         tags: ['medical', 'cosmetic', 'hand rejuvenation', 'injection', 'shorts']
     },
     {
+        title: 'PBSerum',
+        description: 'فيديو قصير عن PBSerum ضمن أعمال القطاع الطبي والتجميلي.',
+        youtubeId: 'pHkLoMtZrzw',
+        category: 'medical',
+        tags: ['medical', 'cosmetic', 'pbserum', 'doctor', 'shorts']
+    },
+    {
         title: 'دكتورة بتتكلم عن التمرين بانتظام والإجهاد',
         description: 'فيديو طبي قصير توضح فيه الدكتورة العلاقة بين ممارسة التمارين بانتظام والإجهاد.',
         youtubeId: 'tbHAA0ehIQE',
