@@ -5,6 +5,8 @@ const showcaseVideos = [
         title: 'Derma Art - تهنئة اليوم الوطني السعودي',
         description: 'فيديو تهنئة من Derma Art بمناسبة اليوم الوطني السعودي.',
         driveId: '1jli9T54fg04zkZDR91Jrz71v2-LCVE5I',
+        src: 'assets/videos/saudi-national-day/derma-art-greeting.mp4',
+        poster: 'assets/img/video-posters/saudi-national-day/derma-art-greeting.webp',
         category: 'saudi_national_day',
         tags: ['derma art', 'saudi national day', 'اليوم الوطني السعودي', 'تهنئة']
     },
@@ -12,6 +14,8 @@ const showcaseVideos = [
         title: 'Derma Art - اليوم الوطني السعودي 2',
         description: 'فيديو احتفالي ثانٍ من Derma Art بمناسبة اليوم الوطني السعودي.',
         driveId: '1iuRi_Cp0l8To1jfYVDAacw48oI95vfvF',
+        src: 'assets/videos/saudi-national-day/derma-art-national-day-2.mp4',
+        poster: 'assets/img/video-posters/saudi-national-day/derma-art-national-day-2.webp',
         category: 'saudi_national_day',
         tags: ['derma art', 'saudi national day', 'اليوم الوطني السعودي', 'احتفال']
     },
@@ -19,6 +23,8 @@ const showcaseVideos = [
         title: 'اليوم الوطني السعودي - AI',
         description: 'فيديو احتفالي بمناسبة اليوم الوطني السعودي بتقنيات الذكاء الاصطناعي.',
         driveId: '1nWdi-4004juI5YtSK5kUtbC5cyNr2l_p',
+        src: 'assets/videos/saudi-national-day/national-day-ai.mp4',
+        poster: 'assets/img/video-posters/saudi-national-day/national-day-ai.webp',
         category: 'saudi_national_day',
         tags: ['ai', 'saudi national day', 'اليوم الوطني السعودي', 'ذكاء اصطناعي']
     },
@@ -26,6 +32,8 @@ const showcaseVideos = [
         title: 'د. بشار - اليوم الوطني السعودي',
         description: 'فيديو احتفالي للدكتور بشار بمناسبة اليوم الوطني السعودي.',
         driveId: '1q_eneHitmlWpzv48--CnpRLT_EQn8J-t',
+        src: 'assets/videos/saudi-national-day/dr-bashar-national-day.mp4',
+        poster: 'assets/img/video-posters/saudi-national-day/dr-bashar-national-day.webp',
         category: 'saudi_national_day',
         tags: ['دكتور بشار', 'saudi national day', 'اليوم الوطني السعودي', 'احتفال']
     },
@@ -33,6 +41,8 @@ const showcaseVideos = [
         title: 'بروز - تهنئة اليوم الوطني السعودي',
         description: 'فيديو تهنئة من بروز بمناسبة اليوم الوطني السعودي.',
         driveId: '1hhp9wBiBuzR6tt-UAxieqo2yyoBdyTDg',
+        src: 'assets/videos/saudi-national-day/barooz-greeting.mp4',
+        poster: 'assets/img/video-posters/saudi-national-day/barooz-greeting.webp',
         category: 'saudi_national_day',
         tags: ['بروز', 'saudi national day', 'اليوم الوطني السعودي', 'تهنئة']
     },
@@ -40,6 +50,8 @@ const showcaseVideos = [
         title: 'بروز - تهنئة اليوم الوطني السعودي 2',
         description: 'فيديو تهنئة ثانٍ من بروز بمناسبة اليوم الوطني السعودي.',
         driveId: '1u54D5jemBGkPslPJl4N9Grsz58_mz-Rq',
+        src: 'assets/videos/saudi-national-day/barooz-greeting-2.mp4',
+        poster: 'assets/img/video-posters/saudi-national-day/barooz-greeting-2.webp',
         category: 'saudi_national_day',
         tags: ['بروز', 'saudi national day', 'اليوم الوطني السعودي', 'تهنئة']
     },
@@ -465,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupSiteAudio();
     setupHeroTilt();
     setupLiteYoutubeEmbeds(document);
-    setupLiteDriveEmbeds(document);
+    setupLiteDriveVideos(document);
     renderVideoGallery();
 });
 
@@ -775,6 +787,12 @@ function renderVideoGallery() {
         const group = groups.find((entry) => entry.key === activeKey) || groups[0];
         const items = group.items.slice(0, visibleCount);
 
+        grid.querySelectorAll('video').forEach((video) => {
+            video.pause();
+            video.removeAttribute('src');
+            video.load();
+        });
+
         heading.textContent = group.label;
         if (items.length) {
             grid.replaceChildren(...items.map((item) => createMediaCard(item)));
@@ -793,7 +811,7 @@ function renderVideoGallery() {
         });
 
         setupLiteYoutubeEmbeds(grid);
-        setupLiteDriveEmbeds(grid);
+        setupLiteDriveVideos(grid);
     }
 }
 
@@ -885,7 +903,7 @@ function createMediaElement(item) {
 
     if (item.driveId) {
         const frame = document.createElement('div');
-        frame.className = 'media-card__frame';
+        frame.className = 'media-card__frame media-card__frame--native';
         frame.appendChild(createDriveFacade(item));
         return frame;
     }
@@ -1019,6 +1037,8 @@ function createDriveFacade(item) {
     button.dataset.driveLite = '';
     button.dataset.driveId = item.driveId;
     button.dataset.driveTitle = item.title || 'فيديو من أعمال EMRF Studio';
+    button.dataset.videoSrc = item.src || '';
+    button.dataset.videoPoster = item.poster || '';
     button.setAttribute('aria-label', `تشغيل الفيديو: ${button.dataset.driveTitle}`);
 
     const poster = document.createElement('img');
@@ -1029,7 +1049,7 @@ function createDriveFacade(item) {
     poster.width = 1080;
     poster.height = 1920;
     poster.addEventListener('error', () => poster.remove(), { once: true });
-    poster.src = `https://drive.google.com/thumbnail?id=${item.driveId}&sz=w1200`;
+    poster.src = item.poster || `https://drive.google.com/thumbnail?id=${item.driveId}&sz=w1200`;
 
     const shade = document.createElement('span');
     shade.className = 'lite-youtube__shade';
@@ -1051,33 +1071,77 @@ function createDriveFacade(item) {
     return button;
 }
 
-function setupLiteDriveEmbeds(root) {
+function setupLiteDriveVideos(root) {
     root.querySelectorAll('[data-drive-lite]').forEach((button) => {
         if (button.dataset.driveEnhanced === 'true') {
             return;
         }
 
         button.dataset.driveEnhanced = 'true';
-        button.addEventListener('click', () => loadDriveEmbed(button), { once: true });
+        button.addEventListener('click', () => loadDriveVideo(button), { once: true });
     });
 }
 
-function loadDriveEmbed(button) {
+function loadDriveVideo(button) {
     const driveId = button.dataset.driveId || '';
     if (!/^[A-Za-z0-9_-]{10,100}$/.test(driveId)) {
         return;
     }
 
-    const iframe = document.createElement('iframe');
-    iframe.className = 'media-card__embed';
-    iframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
-    iframe.title = button.dataset.driveTitle || button.getAttribute('aria-label') || 'Google Drive video';
-    iframe.allow = 'autoplay; fullscreen';
-    iframe.allowFullscreen = true;
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    const frame = button.parentElement;
+    const video = document.createElement('video');
+    video.className = 'media-card__video media-card__video--inline';
+    video.controls = true;
+    video.playsInline = true;
+    video.preload = 'none';
+    video.poster = button.dataset.videoPoster || '';
+    video.setAttribute('aria-label', button.dataset.driveTitle);
 
-    button.replaceWith(iframe);
-    iframe.focus();
+    const showFallback = () => {
+        const restoreFocus = document.activeElement === video;
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+
+        const fallback = document.createElement('div');
+        fallback.className = 'media-card__playback-error';
+        fallback.setAttribute('role', 'status');
+
+        const message = document.createElement('p');
+        message.textContent = 'تعذر تشغيل الفيديو. يمكنك مشاهدة النسخة الأصلية.';
+        const link = document.createElement('a');
+        link.className = 'btn btn--ghost';
+        link.href = `https://drive.google.com/file/d/${driveId}/view`;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = 'مشاهدة الفيديو';
+        fallback.append(message, link);
+        frame.replaceChildren(fallback);
+        if (restoreFocus) {
+            link.focus({ preventScroll: true });
+        }
+    };
+
+    video.addEventListener('error', showFallback, { once: true });
+    video.addEventListener('play', () => {
+        document.querySelectorAll('.media-card video').forEach((otherVideo) => {
+            if (otherVideo !== video) {
+                otherVideo.pause();
+            }
+        });
+        document.querySelector('[data-site-audio]')?.pause();
+    });
+
+    button.replaceWith(video);
+    if (!button.dataset.videoSrc) {
+        showFallback();
+        return;
+    }
+
+    video.src = button.dataset.videoSrc;
+    video.focus();
+    // A blocked autoplay request leaves the native play control available.
+    video.play().catch(() => {});
 }
 
 function observeSections(navList) {
