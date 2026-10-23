@@ -224,6 +224,13 @@ const showcaseVideos = [
         tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
     },
     {
+        title: 'الجديد في علاج الشعر 2',
+        description: 'الفيديو الثاني بعنوان «الجديد في علاج الشعر» ضمن أعمال EMRF Studio الطبية.',
+        youtubeId: 'FCu9iAyzV_0',
+        category: 'medical',
+        tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
+    },
+    {
         title: 'دكتورة بتتكلم عن التمرين بانتظام والإجهاد',
         description: 'فيديو طبي قصير توضح فيه الدكتورة العلاقة بين ممارسة التمارين بانتظام والإجهاد.',
         youtubeId: 'tbHAA0ehIQE',
