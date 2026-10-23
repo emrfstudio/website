@@ -231,6 +231,13 @@ const showcaseVideos = [
         tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
     },
     {
+        title: 'Bloom',
+        description: 'فيديو «Bloom» ضمن أعمال EMRF Studio في القطاع الطبي.',
+        youtubeId: 'ZOPh7JN-JAY',
+        category: 'medical',
+        tags: ['medical', 'bloom', 'shorts']
+    },
+    {
         title: 'دكتورة بتتكلم عن التمرين بانتظام والإجهاد',
         description: 'فيديو طبي قصير توضح فيه الدكتورة العلاقة بين ممارسة التمارين بانتظام والإجهاد.',
         youtubeId: 'tbHAA0ehIQE',
