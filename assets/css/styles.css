@@ -2104,6 +2104,7 @@ ol {
 
 .home-page .site-header {
     height: var(--header-height);
+    padding-inline: 0;
     background: rgba(7, 8, 13, 0.92);
     border-bottom-color: rgba(255, 255, 255, 0.07);
     -webkit-backdrop-filter: blur(10px);
@@ -2111,7 +2112,7 @@ ol {
 }
 
 .home-page .site-header__inner {
-    width: 100%;
+    width: var(--container-width);
     min-width: 0;
     gap: clamp(18px, 2.2vw, 34px);
 }
@@ -2465,7 +2466,7 @@ ol {
 }
 
 .home-page .service-marquee__group li::after {
-    content: '◇';
+    content: '\25C7';
     color: rgba(23, 17, 11, 0.58);
     font-size: 0.62em;
 }

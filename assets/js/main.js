@@ -189,6 +189,27 @@ const showcaseVideos = [
         tags: ['lawyer', 'legal', 'theft', 'awareness', 'shorts']
     },
     {
+        title: 'الجديد في علاج الشعر',
+        description: 'فيديو طبي بعنوان «الجديد في علاج الشعر» ضمن أعمال EMRF Studio.',
+        youtubeId: 'CZjLVrfwzsY',
+        category: 'medical',
+        tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
+    },
+    {
+        title: 'الجديد في علاج الشعر 2',
+        description: 'الفيديو الثاني بعنوان «الجديد في علاج الشعر» ضمن أعمال EMRF Studio الطبية.',
+        youtubeId: 'FCu9iAyzV_0',
+        category: 'medical',
+        tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
+    },
+    {
+        title: 'Bloom',
+        description: 'فيديو «Bloom» ضمن أعمال EMRF Studio في القطاع الطبي.',
+        youtubeId: 'ZOPh7JN-JAY',
+        category: 'medical',
+        tags: ['medical', 'bloom', 'shorts']
+    },
+    {
         title: 'دكتورة تتكلم عن فيتامين C',
         description: 'فيديو طبي قصير تتحدث فيه الدكتورة عن فيتامين C بشكل مبسط.',
         youtubeId: 'H9ihxvbz8c4',
@@ -215,27 +236,6 @@ const showcaseVideos = [
         youtubeId: 'pHkLoMtZrzw',
         category: 'medical',
         tags: ['medical', 'cosmetic', 'pbserum', 'doctor', 'shorts']
-    },
-    {
-        title: 'الجديد في علاج الشعر',
-        description: 'فيديو طبي بعنوان «الجديد في علاج الشعر» ضمن أعمال EMRF Studio.',
-        youtubeId: 'CZjLVrfwzsY',
-        category: 'medical',
-        tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
-    },
-    {
-        title: 'الجديد في علاج الشعر 2',
-        description: 'الفيديو الثاني بعنوان «الجديد في علاج الشعر» ضمن أعمال EMRF Studio الطبية.',
-        youtubeId: 'FCu9iAyzV_0',
-        category: 'medical',
-        tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
-    },
-    {
-        title: 'Bloom',
-        description: 'فيديو «Bloom» ضمن أعمال EMRF Studio في القطاع الطبي.',
-        youtubeId: 'ZOPh7JN-JAY',
-        category: 'medical',
-        tags: ['medical', 'bloom', 'shorts']
     },
     {
         title: 'دكتورة بتتكلم عن التمرين بانتظام والإجهاد',
@@ -491,6 +491,7 @@ const FALLBACK_VIDEO_CATEGORY = {
 };
 
 const GALLERY_PAGE_SIZE = 6;
+const youtubeFacades = new WeakMap();
 
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
@@ -542,7 +543,10 @@ function setupSiteAudio() {
         }
     });
 
-    audio.addEventListener('play', () => updateState(true));
+    audio.addEventListener('play', () => {
+        pauseOtherMedia(audio);
+        updateState(true);
+    });
     audio.addEventListener('pause', () => updateState(false));
     audio.addEventListener('error', () => {
         toggle.classList.remove('is-loading');
@@ -772,6 +776,7 @@ function renderVideoGallery() {
     const loadMore = document.createElement('button');
     loadMore.className = 'media-gallery__more';
     loadMore.type = 'button';
+    loadMore.setAttribute('aria-controls', grid.id);
     loadMore.textContent = 'عرض المزيد من الأعمال';
 
     const filterButtons = new Map();
@@ -797,26 +802,31 @@ function renderVideoGallery() {
 
     loadMore.addEventListener('click', () => {
         visibleCount += GALLERY_PAGE_SIZE;
-        paintGallery();
+        paintGallery(true);
     });
 
     toolbar.append(filters, status);
     gallery.append(toolbar, heading, grid, loadMore);
     paintGallery();
 
-    function paintGallery() {
+    function paintGallery(append = false) {
         const group = groups.find((entry) => entry.key === activeKey) || groups[0];
         const items = group.items.slice(0, visibleCount);
+        const previousCount = append ? grid.children.length : 0;
+        const restoreFocus = append && document.activeElement === loadMore;
 
-        grid.querySelectorAll('video').forEach((video) => {
-            video.pause();
-            video.removeAttribute('src');
-            video.load();
-        });
+        if (!append) {
+            grid.querySelectorAll('video').forEach((video) => {
+                video.pause();
+                video.removeAttribute('src');
+                video.load();
+            });
+            grid.replaceChildren();
+        }
 
         heading.textContent = group.label;
         if (items.length) {
-            grid.replaceChildren(...items.map((item) => createMediaCard(item)));
+            grid.append(...items.slice(previousCount).map((item) => createMediaCard(item)));
             status.textContent = `عرض ${items.length} من ${group.items.length} أعمال`;
         } else {
             const emptyState = document.createElement('p');
@@ -833,6 +843,9 @@ function renderVideoGallery() {
 
         setupLiteYoutubeEmbeds(grid);
         setupLiteDriveVideos(grid);
+        if (restoreFocus && loadMore.hidden) {
+            grid.children[previousCount]?.querySelector('button, video, a')?.focus({ preventScroll: true });
+        }
     }
 }
 
@@ -936,7 +949,9 @@ function createMediaElement(item) {
     const video = document.createElement('video');
     video.className = 'media-card__video';
     video.controls = true;
+    video.playsInline = true;
     video.preload = 'metadata';
+    video.addEventListener('play', () => pauseOtherMedia(video));
     if (item.poster) {
         video.poster = item.poster;
     }
@@ -1028,7 +1043,22 @@ function setupLiteYoutubeEmbeds(root) {
         }
 
         button.dataset.youtubeEnhanced = 'true';
-        button.addEventListener('click', () => loadYoutubeEmbed(button), { once: true });
+        button.addEventListener('click', () => loadYoutubeEmbed(button));
+    });
+}
+
+function pauseOtherMedia(activeMedia) {
+    document.querySelectorAll('video, [data-site-audio]').forEach((media) => {
+        if (media !== activeMedia) {
+            media.pause();
+        }
+    });
+    // Restore the original preview to stop cross-origin playback without loading an API.
+    document.querySelectorAll('iframe[data-youtube-player]').forEach((iframe) => {
+        const facade = youtubeFacades.get(iframe);
+        if (iframe !== activeMedia && facade) {
+            iframe.replaceWith(facade);
+        }
     });
 }
 
@@ -1039,6 +1069,7 @@ function loadYoutubeEmbed(button) {
     }
 
     const iframe = document.createElement('iframe');
+    iframe.dataset.youtubePlayer = '';
     iframe.className = button.dataset.youtubeFrameClass || 'media-card__embed';
     iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&vq=hd1080`;
     iframe.title = button.dataset.youtubeTitle || button.getAttribute('aria-label') || 'YouTube video';
@@ -1047,6 +1078,8 @@ function loadYoutubeEmbed(button) {
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
 
+    pauseOtherMedia(iframe);
+    youtubeFacades.set(iframe, button);
     button.replaceWith(iframe);
     iframe.focus();
 }
@@ -1144,14 +1177,7 @@ function loadDriveVideo(button) {
     };
 
     video.addEventListener('error', showFallback, { once: true });
-    video.addEventListener('play', () => {
-        document.querySelectorAll('.media-card video').forEach((otherVideo) => {
-            if (otherVideo !== video) {
-                otherVideo.pause();
-            }
-        });
-        document.querySelector('[data-site-audio]')?.pause();
-    });
+    video.addEventListener('play', () => pauseOtherMedia(video));
 
     button.replaceWith(video);
     if (!button.dataset.videoSrc) {
