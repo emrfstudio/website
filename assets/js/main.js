@@ -189,11 +189,11 @@ const showcaseVideos = [
         tags: ['lawyer', 'legal', 'theft', 'awareness', 'shorts']
     },
     {
-        title: 'الجديد في علاج الشعر',
-        description: 'فيديو طبي بعنوان «الجديد في علاج الشعر» ضمن أعمال EMRF Studio.',
-        youtubeId: 'CZjLVrfwzsY',
+        title: 'Bloom',
+        description: 'فيديو «Bloom» ضمن أعمال EMRF Studio في القطاع الطبي.',
+        youtubeId: 'ZOPh7JN-JAY',
         category: 'medical',
-        tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
+        tags: ['medical', 'bloom', 'shorts']
     },
     {
         title: 'الجديد في علاج الشعر 2',
@@ -203,18 +203,18 @@ const showcaseVideos = [
         tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
     },
     {
-        title: 'Bloom',
-        description: 'فيديو «Bloom» ضمن أعمال EMRF Studio في القطاع الطبي.',
-        youtubeId: 'ZOPh7JN-JAY',
-        category: 'medical',
-        tags: ['medical', 'bloom', 'shorts']
-    },
-    {
         title: 'دكتورة تتكلم عن فيتامين C',
         description: 'فيديو طبي قصير تتحدث فيه الدكتورة عن فيتامين C بشكل مبسط.',
         youtubeId: 'H9ihxvbz8c4',
         category: 'medical',
         tags: ['medical', 'doctor', 'vitamin c', 'فيتامين سي', 'health', 'shorts']
+    },
+    {
+        title: 'الجديد في علاج الشعر',
+        description: 'فيديو طبي بعنوان «الجديد في علاج الشعر» ضمن أعمال EMRF Studio.',
+        youtubeId: 'CZjLVrfwzsY',
+        category: 'medical',
+        tags: ['medical', 'hair', 'hair treatment', 'علاج الشعر', 'shorts']
     },
     {
         title: 'دكتورة تتكلم عن البوتوكس',
